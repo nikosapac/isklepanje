@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- Hibernate logger to capture database-related logs -->
+    <logger name="org.hibernate" level="TRACE" />
+
+    <!-- Logger to capture SQL queries -->
+    <logger name="org.hibernate.SQL" level="DEBUG" />
+
+    <!-- Logger to capture SQL parameter binding -->
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" />
+
+    <!-- Logger to capture transaction-related logs -->
+    <logger name="org.hibernate.transaction" level="TRACE" />
+
+    <!-- Add any other specific loggers related to database interactions here -->
+
+    <root level="OFF">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
+
+<!-- 
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
+-->
+
+
