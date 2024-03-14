@@ -83,24 +83,18 @@
 			<version>2.1.0-alpha1</version>
 		</dependency>
 
-
 		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.4.8</version>
 		</dependency>
-
+		
+		<!-- https://mvnrepository.com/artifact/com.ibm.db2/jcc -->
 		<dependency>
-			<groupId>com.ibm.db2.jcc</groupId>
-			<artifactId>db2jcc4</artifactId>
-			<version>11.5.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.ibm.db2.jcc</groupId>
-			<artifactId>db2jcc_license_cu</artifactId>
-			<version>11.5.7</version>
+		    <groupId>com.ibm.db2</groupId>
+		    <artifactId>jcc</artifactId>
+		    <version>11.5.9.0</version>
 		</dependency>
 
 		<!--
@@ -185,7 +179,14 @@
 			<artifactId>extentreports</artifactId>
 			<version>3.1.0</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.5.13</version> <!-- use the latest version here -->
+		</dependency>
 
+		
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>com.mysql</groupId>

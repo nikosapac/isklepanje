@@ -17,9 +17,10 @@ public class Prijave2 {
 	
 	EnvironmentConfig cfg = ConfigFactory.create(EnvironmentConfig.class);
 	String baseUrl = cfg.baseURL();
-	
+		
 	String email = cfg.iTriglavEmail();
 	String password = cfg.iTriglavPass();
+	
 	
 	public Prijave2(WebDriver driver) {
 		this.driver=driver;

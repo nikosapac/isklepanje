@@ -22,7 +22,7 @@ public class BrowserManager {
 	    		ChromeOptions options = new ChromeOptions();
 	    	    options.addArguments("--start-maximized");
 	    	    options.addArguments("--remote-allow-origins=*");
-	   // 	    options.addArguments("--headless=new");
+	    	 //   options.addArguments("--headless=new");
 	            options.addArguments("window-size=1920,1080");
 	            	            
 	            //initialize driver for chrome

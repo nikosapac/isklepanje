@@ -216,6 +216,32 @@ public class Funkcije2 {
 		
 	}
 	
+	public void ScrollInKlik2WebEl(WebElement webEll) throws InterruptedException {
+	    int viewportHeight = ((Long) ((JavascriptExecutor) driver).executeScript("return window.innerHeight")).intValue();
+	    int halfViewport = viewportHeight / 2;
+	    
+	    int ele_Position = webEll.getLocation().getY();
+	    ((JavascriptExecutor) driver).executeScript("window.scroll(0, " + (ele_Position - halfViewport) + ");");
+	    Thread.sleep(1000);
+	    webEll.click(); 
+	    Thread.sleep(1000);
+	}
+	
+	//First make list of web elements:
+	//List<WebElement> spremeniPak = driver.findElements(By.className("change-package"));
+	//usage: f.ScrollInKlik2WebEleList(spremeniPak.get(i), spremeniPak.get(i));
+	public void ScrollInKlik2WebEleList(WebElement scrollElement, WebElement clickElement) throws InterruptedException {
+	    int viewportHeight = ((Long) ((JavascriptExecutor) driver).executeScript("return window.innerHeight")).intValue();
+	    int halfViewport = viewportHeight / 2;
+
+	    int ele_Position = scrollElement.getLocation().getY();
+	    ((JavascriptExecutor) driver).executeScript("window.scroll(0, " + (ele_Position - halfViewport) + ");");
+	    Thread.sleep(1000);
+	    clickElement.click(); 
+	    Thread.sleep(1000);
+	}
+
+	
 	public void ScrollToElement(By locator) throws InterruptedException {
 
 		int viewportHeight = ((Long) ((JavascriptExecutor) driver).executeScript("return window.innerHeight")).intValue();
