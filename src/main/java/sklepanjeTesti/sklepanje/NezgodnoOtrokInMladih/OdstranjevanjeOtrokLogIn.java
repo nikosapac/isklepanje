@@ -149,6 +149,7 @@ public class OdstranjevanjeOtrokLogIn {
 		cp.changePersonalInfo();
 		
 		for(int i = 0; i <= 2; i++) {
+			Thread.sleep(2000);
 			f.ScrollInKlik2(By.id("add-child"));
 			Thread.sleep(1000);
 			driver.findElement(By.id("name")).sendKeys(imeOtroka[i]);

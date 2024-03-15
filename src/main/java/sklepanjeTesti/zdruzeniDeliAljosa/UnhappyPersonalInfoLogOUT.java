@@ -35,7 +35,7 @@ public class UnhappyPersonalInfoLogOUT {
 		String osRojst = "09.09.1999";
 		String posta = "9000";
 		String houseNum = "1";
-		String davcna = "88123456";
+		String davcna = "17130271";
 		String mail = "zkpr.test@triglav.si";
 		String verfCode = "9999";
 		

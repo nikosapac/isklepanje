@@ -167,7 +167,7 @@ public class OdstranjevanjePodatkov {
 				driver.findElement(By.id("childMemberAddModal")).sendKeys(Keys.PAGE_DOWN, Keys.PAGE_DOWN);
 				Thread.sleep(1000);
 				driver.findElement(By.id("addressSearch.post_and_place")).sendKeys("9000");
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-id-4")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-id-22")));
 				Thread.sleep(1000);
 				driver.findElement(By.id("addressSearch.post_and_place")).sendKeys(Keys.ARROW_DOWN);
 				Thread.sleep(2000);
@@ -184,9 +184,11 @@ public class OdstranjevanjePodatkov {
 			if(i >= 0 && i <= 8) {
 				driver.findElement(By.id("childMemberAddModal")).sendKeys(Keys.PAGE_DOWN, Keys.PAGE_DOWN);
 				f.ScrollInKlik2(By.id("addInsurerForm"));
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("spinner-wrapper")));
 			}
 			if (i == 8) {
 				f.ScrollInKlik2(By.xpath("(//*[@class = 'close'])[2]"));
+				Thread.sleep(3000);
 			}
 			
 			switch(i) {
@@ -215,8 +217,9 @@ public class OdstranjevanjePodatkov {
 		}
 		
 		for(int i = 0; i <= 2; i++) {
+			Thread.sleep(2000);
 			f.ScrollInKlik2(By.id("add-child"));
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 			driver.findElement(By.id("name")).sendKeys(imeOtroka[i]);
 			driver.findElement(By.id("surname")).sendKeys(priimOtroka[i]);
 			driver.findElement(By.id("birthday")).sendKeys(birthDateOt[i]);
@@ -227,14 +230,14 @@ public class OdstranjevanjePodatkov {
 				driver.findElement(By.id("childMemberAddModal")).sendKeys(Keys.PAGE_DOWN, Keys.PAGE_DOWN);
 				Thread.sleep(1000);
 				driver.findElement(By.id("addressSearch.post_and_place")).sendKeys(postRes[i]);
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-id-68")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ui-menu-item")));
 				Thread.sleep(1000);
 				driver.findElement(By.id("addressSearch.post_and_place")).sendKeys(Keys.ARROW_DOWN);
 				Thread.sleep(2000);
 				driver.findElement(By.id("addressSearch.post_and_place")).sendKeys(Keys.RETURN);
 				driver.findElement(By.id("addressSearch.street")).click();
 				for (int n = 1; n <= choosingStreet[i]; n++) {
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-id-69")));
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div/div/div[2]/div/form/div[6]/div/div[1]/div[2]/ul")));
 					driver.findElement(By.id("addressSearch.street")).sendKeys(Keys.ARROW_DOWN);
 					if (n == choosingStreet[i]) {
 						driver.findElement(By.id("addressSearch.street")).sendKeys(Keys.RETURN);
@@ -242,7 +245,7 @@ public class OdstranjevanjePodatkov {
 				}
 				driver.findElement(By.id("addressSearch.hnr")).click();
 				for (int n = 1; n <= choosingHouseNum[i]; n++) {
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-id-70")));
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div/div/div[2]/div/form/div[6]/div/div[1]/div[3]/ul")));
 					driver.findElement(By.id("addressSearch.hnr")).sendKeys(Keys.ARROW_DOWN);
 					if (n == choosingHouseNum[i]) {
 						driver.findElement(By.id("addressSearch.hnr")).sendKeys(Keys.RETURN);
