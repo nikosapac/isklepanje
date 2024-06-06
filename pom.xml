@@ -102,14 +102,24 @@
 		    <artifactId>jcc</artifactId>
 		    <version>11.5.9.0</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		    <version>4.21.0</version>
+		</dependency>
+
 
 		<!--
-		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.15.0</version>
 		</dependency>
+		
+		-->
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
@@ -179,12 +189,22 @@
 			<version>2.6.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports 
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
-			<version>3.1.0</version>
+			<version>3.1.5</version>
 		</dependency>
+		
+		-->
+		
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<dependency>
+		    <groupId>com.aventstack</groupId>
+		    <artifactId>extentreports</artifactId>
+		    <version>5.1.1</version>
+		</dependency>
+
 		
 		<dependency>
 		    <groupId>org.apache.httpcomponents</groupId>

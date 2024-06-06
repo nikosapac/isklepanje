@@ -43,13 +43,13 @@ public class DatabaseQueryTestEnv {
 	 	
 		Timestamp testTimestamp = new Timestamp(testStartTime.getTime());
 	 	        
-	    System.out.println("Ime testa: " + testName);
-		System.out.println("Datum testa: " + testTimestamp);
-		System.out.println("Status testa: " + testStatus);
-		System.out.println("Uspešni testi: " + passedSteps);
-		System.out.println("Neuspešni testi: " + failedSteps);
-		System.out.println("Opis neuspešnih testov: " + formattedString);
-		System.out.println("Env: " + envName);
+//	    System.out.println("Ime testa: " + testName);
+//		System.out.println("Datum testa: " + testTimestamp);
+//		System.out.println("Status testa: " + testStatus);
+//		System.out.println("Uspešni testi: " + passedSteps);
+//		System.out.println("Neuspešni testi: " + failedSteps);
+//		System.out.println("Opis neuspešnih testov: " + formattedString);
+//		System.out.println("Env: " + envName);
 		
         String SQL = "INSERT INTO SELENIUM.TESTS_DATA(APPLICATION_NAME,TEST_DATE,TEST_STATUS,PASSED_TESTS,FAILED_TESTS,FAILED_TESTS_TEXT) "
                 + "VALUES(?,?,?,?,?,?)";

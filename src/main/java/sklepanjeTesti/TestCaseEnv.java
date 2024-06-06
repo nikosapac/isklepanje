@@ -59,7 +59,8 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.model.Log;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+//import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -78,6 +79,7 @@ import sklepanjeTesti.sklepanje.naprave.ostaleNaprave.*;
 import sklepanjeTesti.sklepanje.naprave.prenosneNaprave.*;
 import sklepanjeTesti.sklepanje.validacija.*;
 import sklepanjeTesti.dbHandler.DatabaseQueryTestEnv;
+import sklepanjeTesti.sklepanje.potovanjeTujina.*;
 
 public class TestCaseEnv {
 	
@@ -89,7 +91,9 @@ public class TestCaseEnv {
 	
 	public ExtentReports extent;
 	public ExtentTest logger;
-	public ExtentHtmlReporter  htmlReporter;
+//	public ExtentHtmlReporter  htmlReporter;
+	public ExtentSparkReporter spark;
+
 	
 	public static int passedSteps = 0;
 	public static int failedSteps = 0;
@@ -117,30 +121,33 @@ public class TestCaseEnv {
     private static final Logger logger2 = LoggerFactory.getLogger(TestCaseEnv.class);
         
     List<Status> statusHierarchy = Arrays.asList(
-            Status.FATAL,
+  //          Status.FATAL,
             Status.FAIL,
-            Status.ERROR,
+ //           Status.ERROR,
             Status.PASS,
             Status.WARNING,
             Status.SKIP,
-            Status.DEBUG,
+//            Status.DEBUG,
             Status.INFO
     ); 
         
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite() {
     	
-    	htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/reporti/SklepanjeReport.html");
-		htmlReporter.setAppendExisting(true);
+//    	htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/reporti/SklepanjeReport.html");
+//		htmlReporter.setAppendExisting(true);
+    	spark = new ExtentSparkReporter(System.getProperty("user.dir") + "/reporti/SklepanjeReport.html");
     	
     	extent = new ExtentReports();
 		
-		extent.config().statusConfigurator().setStatusHierarchy(statusHierarchy);
+		//extent.config().statusConfigurator().setStatusHierarchy(statusHierarchy);
 		
-		extent.attachReporter(htmlReporter);
+		//extent.attachReporter(htmlReporter);
+    	
+    	extent.attachReporter(spark);
 		
 		logger = extent.createTest("isklepanje");
-		
+//		
 				
     }
     	
@@ -668,27 +675,25 @@ public class TestCaseEnv {
 			
 	// Testi za premoženje:
 		
-
-	@Test(groups = {"Premoz"},retryAnalyzer = RerunTest.class)
-	public void NezgodaQ2Otroka() throws Exception {
-
-		WebDriver driver = threadLocalDriver.get();
-	//	logger.assignCategory("Bančne kartice");
-	    long threadId = Thread.currentThread().getId();
-	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
-	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
-	    
-	    String envName = System.getProperty("env");
-        
-        System.out.println("envName: " + envName);
-	    
-	    Nezgoda nez = new Nezgoda(driver);
-	    nez.NezgodaQTest2Otroka();
-	    
-	    driver.quit();
-	    threadLocalDriver.remove();
-	}
 	
+//	@Test(groups = {"Premoz"},retryAnalyzer = RerunTest.class)
+//	public void BancneKartice() throws Exception {
+//		
+//		WebDriver driver = threadLocalDriver.get();
+//	    long threadId = Thread.currentThread().getId();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	    BancneKartice bk = new BancneKartice(driver);
+//	    bk.BancneKarticeTest();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	}
+	
+	
+	
+	/*
 	@Test(groups = {"Premoz"},retryAnalyzer = RerunTest.class)
 	public void NezgodaQ() throws Exception {
 
@@ -971,6 +976,201 @@ public class TestCaseEnv {
 	}
 	*/
 	
+	
+	
+	
+	
+	/*//////////////////////////////////////////////////// POTOVANJE V TUJINO ////////////////////////////////////////////////////*/
+	
+	
+	
+	
+	/////////////////////////////*/ POSAMIČNO ZAVAROVANJE /*//////////////////////////////
+	
+	
+	//  ↓ potovanje v tujino posamicno - prijavljen ( trajanje 2 dni, Paket B )↓ 
+	
+//	@Test(groups = {"Premoz"}
+//		  ,retryAnalyzer = RerunTest.class
+//			)
+//		public void PotovanjeTujina_Posamicno_Prijavljen() throws Exception {
+//		
+//		WebDriver driver = threadLocalDriver.get();
+//	    long threadId = Thread.currentThread().getId();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	    PotovanjeTujina_Posamicno_Prijavljen ptPP = new PotovanjeTujina_Posamicno_Prijavljen(driver);
+//	    ptPP.PotovanjeTujinaPosamicnoPrijavljenTest();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	}  
+	
+	
+	
+	//  ↓ potovanje v tujino posamicno - neprijavljen ( trajanje 3 dni, Paket A )↓ 
+	
+//		@Test(groups = {"Premoz"}
+//			,retryAnalyzer = RerunTest.class
+//				)
+//			public void PotovanjeTujina_Posamicno_Neprijavljen() throws Exception {
+//			
+//			WebDriver driver = threadLocalDriver.get();
+//		    long threadId = Thread.currentThread().getId();
+//		    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//		    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//		    
+//		    PotovanjeTujina_Posamicno_Neprijavljen ptPN = new PotovanjeTujina_Posamicno_Neprijavljen(driver);
+//		    ptPN.PotovanjeTujinaPosamicnoTest();
+//		    
+//		    driver.quit();
+//		    threadLocalDriver.remove();
+//		}  
+
+	
+	
+	//  ↓ potovanje v tujino posamicno - naknadna prijava ( trajanje 5 dni + "se boste v tujini ukvarjali z različnimi športi... DA", Paket C )↓
+//	
+//		@Test(groups = {"Premoz"}
+//			  ,retryAnalyzer = RerunTest.class
+//				)
+//			public void PotovanjeTujina_Posamicno_NaknadnaPrijava() throws Exception {
+//		
+//			WebDriver driver = threadLocalDriver.get();
+//	    	long threadId = Thread.currentThread().getId();
+//	   		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    	System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	   	    PotovanjeTujina_Posamicno_NaknadnaPrijava ptPNP = new PotovanjeTujina_Posamicno_NaknadnaPrijava(driver);
+//	    	ptPNP.PotovanjeTujinaPosamicnoNaknadnaPrijavaTest();
+//	    
+//	    	driver.quit();
+//	    	threadLocalDriver.remove();
+//		}  
+	
+	
+		
+
+	
+	//////////////////////////*/ DRUZINSKO ZAVAROVANJE /*//////////////////////////
+
+	
+	//  ↓ potovanje v tujino druzinsko - prijavljen ↓ ( trajanje 8 dni, Paket B , zavarovanec se bo v tujini ukvarjal z rizičnimi športi... DA)↓
+	
+		 @Test(groups = {"Premoz"}
+		 	//,retryAnalyzer = RerunTest.class
+				)
+		 	public void PotovanjeTujina_Druzinsko_Prijavljen() throws Exception {
+			 
+			WebDriver driver = threadLocalDriver.get();
+			long threadId = Thread.currentThread().getId();
+			String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+			System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+	
+			PotovanjeTujina_Druzinsko_Prijavljen ptDP = new PotovanjeTujina_Druzinsko_Prijavljen(driver);
+			ptDP.PotovanjeTujinaDruzinskoPrijavljenTest();
+	
+			driver.quit();
+			threadLocalDriver.remove();
+		}	  
+
+	
+	
+	//  ↓ potovanje v tujino druzinsko - neprijavljen ( trajanje 1 leto + "Manj kot 90 dni", Paket C )↓
+	
+//		@Test(groups = {"Premoz"}
+//	 		,retryAnalyzer = RerunTest.class
+//  		     )
+//		public void PotovanjeTujina_Druzisnko_Neprijavljen() throws Exception {
+//		
+//			WebDriver driver = threadLocalDriver.get();
+//	    	long threadId = Thread.currentThread().getId();
+//	    	String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	   		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	   		PotovanjeTujina_Druzinsko_Neprijavljen ptDN = new PotovanjeTujina_Druzinsko_Neprijavljen(driver);
+//	    	ptDN.PotovanjeTujinaDruzinskoTest();
+//	    
+//	   		driver.quit();
+//	    	threadLocalDriver.remove();
+//		}  
+	
+
+	
+	//  ↓ potovanje v tujino druzinsko - naknadna prijava ↓ ( trajanje 1 leto + "90 ali več dni", Paket A )↓
+	
+//		 @Test(groups = {"Premoz"}
+//		 	 ,retryAnalyzer = RerunTest.class
+//				)
+//		 	public void PotovanjeTujina_Druzinsko_NaknadnaPrijava() throws Exception {
+//			 
+//			WebDriver driver = threadLocalDriver.get();
+//    		long threadId = Thread.currentThread().getId();
+//    		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//    		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//    
+//    		PotovanjeTujina_Druzinsko_NaknadnaPrijava ptDNP = new PotovanjeTujina_Druzinsko_NaknadnaPrijava(driver);
+//    		ptDNP.PotovanjeTujinaDruzinskoNadoknadnaPrijavaTest();
+//    
+//    		driver.quit();
+//    		threadLocalDriver.remove();
+//		}	  
+
+	
+	
+	
+	
+	//////////////////////////*/ SKUPINSKO ZAVAROVANJE /*//////////////////////////
+
+	
+	//  ↓ potovanje v tujino skupinsko - neprijavljen ↓
+	
+//		@Test(groups = {"Premoz"}
+//	 	 ,retryAnalyzer = RerunTest.class
+//			)
+//			public void PotovanjeTujina_Skupinsko_Neprijavljen() throws Exception {
+//		
+//			WebDriver driver = threadLocalDriver.get();
+//	   		long threadId = Thread.currentThread().getId();
+//	   		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	   		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	    	PotovanjeTujina_Skupinsko_Neprijavljen ptSN = new PotovanjeTujina_Skupinsko_Neprijavljen(driver);
+//	    	ptSN.PotovanjeTujinaSkupinskoTest();
+//	    
+//	   	 	driver.quit();
+//	    	threadLocalDriver.remove();
+//	}  
+//	
+	
+	
+	//  ↓ potovanje v tujino skupinsko - naknadna prijava ↓
+	
+//		@Test(groups = {"Premoz"}
+//			,retryAnalyzer = RerunTest.class
+//			)
+//			public void PotovanjeTujina_Skupinsko_NaknadnaPrijava() throws Exception {
+//	
+//			WebDriver driver = threadLocalDriver.get();
+//  		long threadId = Thread.currentThread().getId();
+//  		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//  		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//   
+//  		PotovanjeTujina_Skupinsko_NaknadnaPrijava ptSNP = new PotovanjeTujina_Skupinsko_NaknadnaPrijava(driver);
+//  		ptSNP.PotovanjeTujinaSkupinskoNaknadnaPrijavaTest();
+//   
+//  	 	driver.quit();
+//   		threadLocalDriver.remove();
+//	}    
+
+	
+	
+		
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
+	
+	
 	public static String getScreenshot(WebDriver driver, String screenshotName) throws Exception {
         String dateName = new SimpleDateFormat("dd.MM.yyyy HH.mm.ss").format(new Date());
 		TakesScreenshot ts = (TakesScreenshot) driver;
@@ -1069,7 +1269,9 @@ public class TestCaseEnv {
 			testEndTime = logger.getModel().getEndTime();
 			testStatus = logger.getStatus();
 			
-			testList = htmlReporter.getTestList();
+			//testList = htmlReporter.getTestList();
+			
+			testList = spark.getReport().getTestList();
 			
 			setTestName(testName);
 			setTestStartTime(testStartTime);
@@ -1083,11 +1285,11 @@ public class TestCaseEnv {
 			setTestStatus(testStatus);
 						        
 			
-	        DatabaseQueryTestEnv db = new DatabaseQueryTestEnv();
-	        db.triglavTestsData();
+//	        DatabaseQueryTestEnv db = new DatabaseQueryTestEnv();
+//	        db.triglavTestsData();
 			
-			ReportBackuper bk = new ReportBackuper();
-			bk.backUpReport();
+//			ReportBackuper bk = new ReportBackuper();
+//			bk.backUpReport();
 		}
 		catch(Exception e) {
 	      //  logger2.error("An error occurred during the @AfterSuite configuration: ", e);
@@ -1105,6 +1307,11 @@ public class TestCaseEnv {
 
 	public static int getPassedSteps() {
 		return passedSteps;
+
+
+
+
+
 	}
 
 

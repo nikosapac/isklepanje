@@ -77,7 +77,7 @@ public class Prijave2 {
 	public void SklepanjePrijava() throws InterruptedException {
 		
 		Funkcije funk = new Funkcije(driver);
-		
+				
 		driver.get(baseUrl + "/isklepanje/ldap-login");
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
@@ -90,14 +90,14 @@ public class Prijave2 {
 		Thread.sleep(500);
 		
 		funk.implicitWait(10);
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		
 		if(funk.IsVisible(By.xpath("//*[@class='s-alert-close']")) == true) {
 			driver.findElement(By.xpath("//*[@class='s-alert-close']")).click();
 		} 
 		
 		funk.implicitWait(10);
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		
 		if(funk.IsVisible(By.xpath("//*[@id=\"onetrust-close-btn-container\"]/button")) == true) {
 			driver.findElement(By.xpath("//*[@id=\"onetrust-close-btn-container\"]/button")).click();

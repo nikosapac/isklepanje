@@ -48,6 +48,8 @@ public class Nezgoda {
 	String itrEmail = cfg.iTriglavEmail();
 	String itrPass = cfg.iTriglavPass();
 	
+	
+	
 	public Nezgoda(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -196,6 +198,8 @@ public class Nezgoda {
 		f.implicitWait(10);
 		
 		driver.get(baseURL + "/isklepanje/nezgoda/nezgodno-zavarovanje-otrok-in-mladih");
+		
+		System.out.println("baseURL: " + baseURL);
 		f.implicitWait(10);
 		driver.findElement(By.xpath("//*[text()='Prijava']")).click();
 		f.implicitWait(10);

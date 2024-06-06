@@ -10,7 +10,7 @@
 	    <groups>
 		 		<run>
 		 			<include name="Premoz"/>
-		 			<exclude name="Other"/>
+		 			<exclude name="Other"/> 
 		 			<exclude name="Naprave"/>
 		 		</run>
 		 	</groups>
