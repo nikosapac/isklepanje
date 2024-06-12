@@ -211,7 +211,7 @@ public class PotovanjeTujina_Druzinsko_Prijavljen {
 		Thread.sleep(1000);
 		driver.findElement(By.id("policyHolderUI.phoneNumber")).sendKeys(telefonska);
 		Thread.sleep(1000);
-		
+
 		WebElement potrjujemvse = driver.findElement(By.xpath("//label[@for='potrjujem-vse']"));
 		int potrjujemvse_Position = potrjujemvse.getLocation().getY();
 		((JavascriptExecutor) driver)
@@ -219,20 +219,21 @@ public class PotovanjeTujina_Druzinsko_Prijavljen {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//label[@for='potrjujem-vse']")).click();
 		Thread.sleep(1000);
-		
+
 		f.ScrollInKlik2(By.xpath("(//*[@class='radio--secondary__button'])[2]"));
-		
+
 		// Počaka in preveri, če se pojavi besedilo
-        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement txt = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Ukvarjanje z rizičnimi športi pomeni povečano nevarnost za morebitne škodne dogodke, zato se premija poviša za 50 %.']")));
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebElement txt = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+				"//*[text()='Ukvarjanje z rizičnimi športi pomeni povečano nevarnost za morebitne škodne dogodke, zato se premija poviša za 50 %.']")));
 
-        if (txt.isDisplayed()) {
-        	f.ScrollInKlik2(By.id("getInsurerModal"));
-        } else {
-            throw new RuntimeException("Ni se izpisal text \"Ukvarjanje z rizičnimi športi pomeni povečano nevarnost za morebitne škodne dogodke, zato se premija poviša za 50 %.\" na strani: https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_3");
-        }
+		if (txt.isDisplayed()) {
+			f.ScrollInKlik2(By.id("getInsurerModal"));
+		} else {
+			throw new RuntimeException(
+					"Ni se izpisal text \"Ukvarjanje z rizičnimi športi pomeni povečano nevarnost za morebitne škodne dogodke, zato se premija poviša za 50 %.\" na strani: https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_3");
+		}
 
-	
 		// DODAJANJE DRUZINSKEGA CLANA
 
 		// Open the modal
@@ -288,6 +289,9 @@ public class PotovanjeTujina_Druzinsko_Prijavljen {
 
 		wait.until(
 				ExpectedConditions.urlToBe("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_5"));
+		
+		// Spletno plačilo s Kreditno Kartico
+				f.ScrollInKlik2(By.xpath("(//*[@class='radio-quaternary__button'])"));
 
 		f.ScrollInKlik("//button[@name='simulatePayment']");
 
@@ -298,9 +302,9 @@ public class PotovanjeTujina_Druzinsko_Prijavljen {
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
 
 		if (ele.isDisplayed()) {
-			System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_Druzinsko_Neprijavljen");
+			System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_Druzinsko_Prijavljen");
 		} else {
-			throw new RuntimeException("Sklenitev NI bila uspesna - TEST: PotovanjeTujina_Druzinsko_Neprijavljen");
+			throw new RuntimeException("Sklenitev NI bila uspesna - TEST: PotovanjeTujina_Druzinsko_Prijavljen");
 		}
 	}
 

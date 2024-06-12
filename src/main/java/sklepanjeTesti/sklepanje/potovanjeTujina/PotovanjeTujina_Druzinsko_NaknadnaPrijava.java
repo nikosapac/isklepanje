@@ -78,7 +78,7 @@ public class PotovanjeTujina_Druzinsko_NaknadnaPrijava {
 		int druzinsko_Position = druzinsko.getLocation().getY();
 		((JavascriptExecutor) driver).executeScript("window.scroll(0, " + (druzinsko_Position - halfViewport) + ");");
 		Thread.sleep(1000);
-		((JavascriptExecutor) driver).executeScript("window.scroll(0,400)");
+		((JavascriptExecutor) driver).executeScript("window.scroll(0,600)");
 
 		driver.findElement(By.id("turisticnoPolicy.insuranceIntro.zptInsuranceType2")).click();
 
@@ -93,11 +93,11 @@ public class PotovanjeTujina_Druzinsko_NaknadnaPrijava {
 		Thread.sleep(200);
 
 		driver.findElement(By.className("select2-selection__arrow")).click();
-		
+
 		f.ScrollInKlik2(By.xpath("(//*[@class='radio--secondary__button'])[2]"));
-		
-        f.ScrollInKlik2(By.className("submitButton"));
-      
+
+		f.ScrollInKlik2(By.className("submitButton"));
+
 		Thread.sleep(400);
 
 		// KORAK 4
@@ -284,8 +284,6 @@ public class PotovanjeTujina_Druzinsko_NaknadnaPrijava {
 		driver.findElement(By.className("radio--secondary__button")).click();
 		Thread.sleep(1000);
 		driver.findElement(By.className("radio-quaternary__button")).click();
-		Thread.sleep(1000);
-		driver.findElement(By.className("agreement-checkbox-label")).click();
 		Thread.sleep(1000);
 
 		f.ScrollInKlik("//button[@name='simulatePayment']");

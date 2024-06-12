@@ -75,9 +75,11 @@ public class PotovanjeTujina_Druzinsko_Neprijavljen {
 		int druzinsko_Position = druzinsko.getLocation().getY();
 		((JavascriptExecutor) driver).executeScript("window.scroll(0, " + (druzinsko_Position - halfViewport) + ");");
 		Thread.sleep(1000);
-		((JavascriptExecutor) driver).executeScript("window.scroll(0,400)");
+		((JavascriptExecutor) driver).executeScript("window.scroll(0,500)");
 
 		driver.findElement(By.id("turisticnoPolicy.insuranceIntro.zptInsuranceType2")).click();
+		
+		Thread.sleep(200);
 
 		driver.findElement(By.className("submitButton")).click();
 
@@ -90,19 +92,20 @@ public class PotovanjeTujina_Druzinsko_Neprijavljen {
 		Thread.sleep(200);
 
 		driver.findElement(By.className("select2-selection__arrow")).click();
-		
-		// Počaka in preveri, če se pojavi besedilo
-        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement txt = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Zavarovanje je brez poteka in se nadaljuje iz leta v leto.']")));
 
-        if (txt.isDisplayed()) {
-            f.ScrollInKlik2(By.className("submitButton"));
-        } else {
-            throw new RuntimeException("Ni se izpisal text \"Zavarovanje je brez poteka in se nadaljuje iz leta v leto....\" na strani: https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_1");
-        }
+		// Počaka in preveri, če se pojavi besedilo
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebElement txt = wait1.until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("//*[text()='Zavarovanje je brez poteka in se nadaljuje iz leta v leto.']")));
+
+		if (txt.isDisplayed()) {
+			f.ScrollInKlik2(By.className("submitButton"));
+		} else {
+			throw new RuntimeException(
+					"Ni se izpisal text \"Zavarovanje je brez poteka in se nadaljuje iz leta v leto....\" na strani: https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_1");
+		}
 
 		Thread.sleep(400);
-
 
 		// KORAK 4
 		// ("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_2")
@@ -256,6 +259,12 @@ public class PotovanjeTujina_Druzinsko_Neprijavljen {
 		Thread.sleep(1000);
 		driver.findElement(By.className("btn-next")).click();
 		Thread.sleep(1000);
+		
+		f.ScrollToElement(By.id("addInsurerForm"));
+		
+		f.ScrollInKlik2(By.className("cs-slidert"));
+		
+		driver.findElement(By.className("btn-next")).click();
 
 		// KORAK 6
 		// ("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_4")

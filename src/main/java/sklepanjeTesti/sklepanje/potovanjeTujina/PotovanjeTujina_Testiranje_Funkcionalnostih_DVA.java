@@ -15,16 +15,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import sklepanjeTesti.Funkcije2;
 import sklepanjeTesti.Prijave2;
 
-// HAPPPY FLOW - Test neprijavljene osebe, ki sklene posamicno zavarovanje ( trajanje 3 dni, Paket A )
-
-public class PotovanjeTujina_Posamicno_Neprijavljen {
+// HAPPPY FLOW - ( trajanje 60 dni, obcija želim nadaljevati kasneje označena, plačilo na obroke )
+public class PotovanjeTujina_Testiranje_Funkcionalnostih_DVA {
 	private WebDriver driver;
 
-	public PotovanjeTujina_Posamicno_Neprijavljen(WebDriver driver) {
+	public PotovanjeTujina_Testiranje_Funkcionalnostih_DVA(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public void PotovanjeTujinaPosamicnoTest() throws InterruptedException {
+	public void PotovanjeTujinaTestiranjeFunkcionalnostihTestDVA() throws InterruptedException {
 
 		Funkcije2 f = new Funkcije2(driver);
 
@@ -44,6 +43,9 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 		String email = "zkpr.test@triglav.si";
 		String validacijskaKoda = "9999";
 
+		String naknadnaprijavaEmail = "jan.volovsek@triglav.si";
+		String naknadnaprijavaGeslo = "Jan@test_1";
+
 		// PRIJAVA
 
 		p.SklepanjePrijava();
@@ -53,18 +55,26 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 
 		driver.get("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje");
 
-		Thread.sleep(300);
+		wait.until(ExpectedConditions.elementToBeClickable(By.className("intro-btn")));
 
-		wait.until(ExpectedConditions.elementToBeClickable(By.className("submitButton")));
+		driver.findElement(By.className("intro-btn")).click();
 
-		Thread.sleep(300);
+		// PRIJAVA
 
-		driver.findElement(By.className("submitButton")).click();
+		driver.findElement(By.id("email")).sendKeys(naknadnaprijavaEmail);
+
+		Thread.sleep(1000);
+
+		driver.findElement(By.id("Password")).sendKeys(naknadnaprijavaGeslo);
+
+		driver.findElement(By.id("next")).click();
+	            
+	            
 
 		// KORAK 2
-		// ("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_vrsta")
+		// ("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje")
 
-		wait.until(ExpectedConditions.urlToBe("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_vrsta"));
+		wait.until(ExpectedConditions.urlToBe("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje"));
 
 		int viewportHeight = ((Long) ((JavascriptExecutor) driver).executeScript("return window.innerHeight"))
 				.intValue();
@@ -74,7 +84,7 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 		int posamicno_Position = posamicno.getLocation().getY();
 		((JavascriptExecutor) driver).executeScript("window.scroll(0, " + (posamicno_Position - halfViewport) + ");");
 		Thread.sleep(1000);
-		((JavascriptExecutor) driver).executeScript("window.scroll(0,400)");
+		((JavascriptExecutor) driver).executeScript("window.scroll(0,800)");
 
 		driver.findElement(By.id("turisticnoPolicy.insuranceIntro.zptInsuranceType1")).click();
 
@@ -92,7 +102,7 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 
 		Thread.sleep(400);
 
-		driver.findElement(By.xpath("(//*[@class='select2-results__option'])[2]")).click();
+		driver.findElement(By.xpath("(//*[@class='select2-results__option'])[8]")).click();
 
 		f.ScrollInKlik2(By.className("submitButton"));
 
@@ -102,9 +112,9 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 		wait.until(
 				ExpectedConditions.urlToBe("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_2"));
 
-		f.ScrollInKlik2(By.className("inactiveText"));
-
 		f.ScrollInKlik2(By.id("btnPackageSmall"));
+
+		Thread.sleep(300);
 
 		f.ScrollInKlik2(By.className("submitButton"));
 
@@ -113,6 +123,10 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 
 		wait.until(
 				ExpectedConditions.urlToBe("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_3"));
+
+		driver.findElement(By.id("policyHolderUI.name")).clear();
+
+		driver.findElement(By.id("policyHolderUI.surname")).clear();
 
 		WebElement imeSklenitelja = driver.findElement(By.id("policyHolderUI.name"));
 		int imeSklenitelja_Position = imeSklenitelja.getLocation().getY();
@@ -143,11 +157,11 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 		driver.findElement(By.id("policyHolderUI.taxnum")).sendKeys(davcna);
 		Thread.sleep(1000);
 
-		WebElement podatkispol = driver.findElement(By.id("female"));
+		WebElement podatkispol = driver.findElement(By.id("male"));
 		int podatkispol_Position = podatkispol.getLocation().getY();
 		((JavascriptExecutor) driver).executeScript("window.scroll(0, " + (podatkispol_Position - halfViewport) + ");");
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("(//*[@class='radio--primary__button'])[2]")).click();
+		driver.findElement(By.xpath("(//*[@class='radio--primary__button'])[1]")).click();
 		Thread.sleep(1000);
 
 		WebElement postaNaslov = driver.findElement(By.id("policyHolderUI.addressSearch.post_and_place"));
@@ -185,17 +199,6 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 		driver.findElement(By.id("policyHolderUI.addressSearch.hnr")).sendKeys(Keys.DOWN, Keys.ENTER);
 		Thread.sleep(2000);
 
-		WebElement podatkiemail = driver.findElement(By.id("unvalidatedEmail"));
-		int podatkiemail_Position = podatkiemail.getLocation().getY();
-		((JavascriptExecutor) driver)
-				.executeScript("window.scroll(0, " + (podatkiemail_Position - halfViewport) + ");");
-		Thread.sleep(1000);
-		driver.findElement(By.id("unvalidatedEmail")).sendKeys(email);
-		driver.findElement(By.id("btnPosliValidacijskoKodoNaEmail")).click();
-		Thread.sleep(3000);
-		driver.findElement(By.id("emailValidationString")).sendKeys(validacijskaKoda + Keys.ENTER);
-		Thread.sleep(1500);
-
 		WebElement podatkitelefonska = driver.findElement(By.id("policyHolderUI.phoneNumber"));
 		int podatkitelefonska_Position = podatkitelefonska.getLocation().getY();
 		((JavascriptExecutor) driver)
@@ -225,7 +228,17 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 		wait.until(
 				ExpectedConditions.urlToBe("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_4"));
 
-		Thread.sleep(1000);
+		Thread.sleep(200);
+		
+		f.ScrollToElement(By.id("btnSaveInfoCalc"));
+		
+		// shrani za kasneje
+		f.ScrollInKlik2(By.id("btnSaveInfoCalc"));
+
+		// vstopi v i.triglav
+		// driver.findElement(By.xpath("/html/body/div[1]/div/form/div[6]/div[2]/div[2]/div[3]/div[2]/a")).click();
+		 
+	
 
 		f.ScrollInKlik("//*[@for='zavarovalnimi-pogoji']");
 		Thread.sleep(500);
@@ -254,10 +267,12 @@ public class PotovanjeTujina_Posamicno_Neprijavljen {
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
 
 		if (ele.isDisplayed()) {
-			System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_Posamicno_Neprijavljen");
+			System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_Testiranje_Funkcionalnostih_DVA");
 		} else {
-			throw new RuntimeException("Sklenitev NI bila uspesna - TEST: PotovanjeTujina_Posamicno_Neprijavljen");
+			throw new RuntimeException(
+					"Sklenitev NI bila uspesna - TEST: PotovanjeTujina_Testiranje_Funkcionalnostih_DVA");
 		}
 	}
 
-}
+	}
+	

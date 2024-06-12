@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import sklepanjeTesti.Funkcije2;
 import sklepanjeTesti.Prijave2;
 
-// HAPPPY FLOW - Test neprijavljene osebe, ki sklene skupinsko zavarovanje z NAKNADNO PRIJAVO
+// HAPPPY FLOW - Test neprijavljene osebe, ki sklene skupinsko zavarovanje z NAKNADNO PRIJAVO  ( trajanje 30 dni, Paket C, zavarovana oseba se bo ukvarjala z športi...DA (v modalu), "število zavarovancev = 4" )
 
 public class PotovanjeTujina_Skupinsko_NaknadnaPrijava {
 	private WebDriver driver;
@@ -58,6 +58,10 @@ public class PotovanjeTujina_Skupinsko_NaknadnaPrijava {
 		String imeZavarovanca3 = "Lojze";
 		String priimekZavarovanca3 = "Močnik";
 		String datumRojstvaZavarovanca3 = "28.11.1993";
+
+		String imeZavarovanca4 = "Marija";
+		String priimekZavarovanca4 = "Kotnik";
+		String datumRojstvaZavarovanca4 = "21.10.1999";
 
 		// PRIJAVA
 
@@ -102,15 +106,15 @@ public class PotovanjeTujina_Skupinsko_NaknadnaPrijava {
 
 		driver.findElement(By.className("inputNumber-plus")).click();
 
+		driver.findElement(By.className("inputNumber-plus")).click();
+
 		Thread.sleep(200);
 
-		f.ScrollToElement(By.id("select2-turisticnoPolicyinsurancetravelDuration-container"));
+		driver.findElement(By.className("select2-selection__arrow")).click();
 
-		f.ScrollInKlik2(By.id("select2-turisticnoPolicyinsurancetravelDuration-container"));
+		Thread.sleep(400);
 
-		driver.findElement(By.xpath("//*[text() = '30 dni']")).click();
-
-		f.ScrollInKlik2(By.id("select2-turisticnoPolicyinsurancetravelDuration-container"));
+		driver.findElement(By.xpath("(//*[@class='select2-results__option'])[7]")).click();
 
 		Thread.sleep(400);
 
@@ -300,6 +304,8 @@ public class PotovanjeTujina_Skupinsko_NaknadnaPrijava {
 		driver.findElement(By.id("addressSearch.hnr")).sendKeys(Keys.DOWN, Keys.ENTER);
 		Thread.sleep(2000);
 
+		f.ScrollInKlik2(By.xpath("(//*[@class='radio--secondary__button'])[6]"));
+
 		Thread.sleep(1000);
 
 		f.ScrollInKlik2(By.id("addInsurerForm"));
@@ -363,13 +369,15 @@ public class PotovanjeTujina_Skupinsko_NaknadnaPrijava {
 		driver.findElement(By.id("addressSearch.hnr")).sendKeys(Keys.DOWN, Keys.DOWN, Keys.ENTER);
 		Thread.sleep(2000);
 
+		f.ScrollInKlik2(By.xpath("(//*[@class='radio--secondary__button'])[6]"));
+
 		Thread.sleep(1000);
 
 		f.ScrollInKlik2(By.id("addInsurerForm"));
 
 		Thread.sleep(2000);
 
-		// DODAJANJE ZAVAROVANCA 2
+		// DODAJANJE ZAVAROVANCA 3
 
 		f.ScrollInKlik2(By.id("getInsurerModal"));
 
@@ -432,6 +440,71 @@ public class PotovanjeTujina_Skupinsko_NaknadnaPrijava {
 
 		Thread.sleep(2000);
 
+		// DODAJANJE ZAVAROVANCA 4
+
+		f.ScrollInKlik2(By.id("getInsurerModal"));
+
+		driver.findElement(By.id("name")).sendKeys(imeZavarovanca4);
+
+		Thread.sleep(500);
+
+		driver.findElement(By.id("surname")).sendKeys(priimekZavarovanca4);
+
+		Thread.sleep(500);
+
+		driver.findElement(By.id("birthday")).sendKeys(datumRojstvaZavarovanca4);
+
+		Thread.sleep(500);
+
+		driver.findElement(By.xpath("(//*[@class='radio--primary__button'])[3]")).click();
+
+		Thread.sleep(1000);
+
+		WebElement postaNaslov5 = driver.findElement(By.id("addressSearch.post_and_place"));
+		int postaNaslov5_Position = postaNaslov5.getLocation().getY();
+		((JavascriptExecutor) driver)
+				.executeScript("window.scroll(0, " + (postaNaslov5_Position - halfViewport) + ");");
+		Thread.sleep(1000);
+		driver.findElement(By.id("addressSearch.post_and_place")).sendKeys(postnaStevilka);
+		Thread.sleep(2000);
+		f.implicitWait(10);
+		driver.findElement(By.id("addressSearch.post_and_place")).sendKeys(Keys.DOWN, Keys.ENTER);
+		Thread.sleep(1000);
+
+		WebElement ulicaNaslov5 = driver.findElement(By.id("addressSearch.street"));
+		int ulicaNaslov5_Position = ulicaNaslov5.getLocation().getY();
+		((JavascriptExecutor) driver)
+				.executeScript("window.scroll(0, " + (ulicaNaslov5_Position - halfViewport) + ");");
+		Thread.sleep(3000);
+		f.implicitWait(10);
+		driver.findElement(By.id("addressSearch.street")).sendKeys(ulica);
+		Thread.sleep(3000);
+		f.implicitWait(10);
+		driver.findElement(By.id("addressSearch.street")).sendKeys(Keys.DOWN, Keys.DOWN, Keys.ENTER);
+		Thread.sleep(3000);
+
+		f.implicitWait(10);
+
+		WebElement hisnaStevilkaNaslov5 = driver.findElement(By.id("policyHolderUI.addressSearch.hnr"));
+		int hisnaStevilkaNaslov5_Position = hisnaStevilkaNaslov5.getLocation().getY();
+		((JavascriptExecutor) driver)
+				.executeScript("window.scroll(0, " + (hisnaStevilkaNaslov5_Position - halfViewport) + ");");
+		Thread.sleep(1000);
+		f.implicitWait(10);
+		driver.findElement(By.id("addressSearch.hnr")).sendKeys(hisnaStevilka);
+		Thread.sleep(2000);
+		f.implicitWait(10);
+		driver.findElement(By.id("addressSearch.hnr")).sendKeys(Keys.DOWN, Keys.DOWN, Keys.ENTER);
+		Thread.sleep(2000);
+
+		f.ScrollInKlik2(By.xpath("(//*[@class='radio--secondary__button'])[6]"));
+
+		Thread.sleep(1000);
+
+		f.ScrollInKlik2(By.id("addInsurerForm"));
+
+		Thread.sleep(2000);
+
 		// NAPREJ GUMB
 
 		WebElement naprej3 = driver.findElement(By.className("btn-next"));
@@ -476,9 +549,9 @@ public class PotovanjeTujina_Skupinsko_NaknadnaPrijava {
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
 
 		if (ele.isDisplayed()) {
-			System.out.println("Sklenitev je bila uspešna - TEST: PotovanjeTujina_Skupinsko_NaknadnaPrijava");
+			System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_Skupinsko_NaknadnaPrijava");
 		} else {
-			throw new RuntimeException("Sklenitev NI bila uspešna - TEST: PotovanjeTujina_Skupinsko_NaknadnaPrijava");
+			throw new RuntimeException("Sklenitev NI bila uspesna - TEST: PotovanjeTujina_Skupinsko_NaknadnaPrijava");
 		}
 	}
 

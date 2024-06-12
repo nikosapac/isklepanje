@@ -703,9 +703,6 @@ public class TestCaseEnv {
 	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
 	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
 	    
-	    String envName = System.getProperty("env");
-        
-        System.out.println("envName: " + envName);
 	    
 	    Nezgoda nez = new Nezgoda(driver);
 	    nez.NezgodaQTest();
@@ -763,6 +760,7 @@ public class TestCaseEnv {
 	    threadLocalDriver.remove();
 	}
 	
+	// ne zaganja
 	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz","Other"})
 	public void Avtomobili() throws Exception {
 		//WebDriver driver = drivers.get("AvtomobiliTest");
@@ -979,8 +977,9 @@ public class TestCaseEnv {
 	
 	
 	
-	
-	/*//////////////////////////////////////////////////// POTOVANJE V TUJINO ////////////////////////////////////////////////////*/
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*///////////////////////////////////////////// POTOVANJE V TUJINO ////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
 	
 	
 	
@@ -990,7 +989,7 @@ public class TestCaseEnv {
 	
 	//  ↓ potovanje v tujino posamicno - prijavljen ( trajanje 2 dni, Paket B )↓ 
 	
-//	@Test(groups = {"Premoz"}
+//		@Test(groups = {"Premoz"}
 //		  ,retryAnalyzer = RerunTest.class
 //			)
 //		public void PotovanjeTujina_Posamicno_Prijavljen() throws Exception {
@@ -1030,8 +1029,8 @@ public class TestCaseEnv {
 
 	
 	
-	//  ↓ potovanje v tujino posamicno - naknadna prijava ( trajanje 5 dni + "se boste v tujini ukvarjali z različnimi športi... DA", Paket C )↓
-//	
+	//  ↓ potovanje v tujino posamicno - naknadna prijava ( trajanje 5 dni + se boste v tujini ukvarjali z različnimi športi..."DA", Paket C )↓
+	
 //		@Test(groups = {"Premoz"}
 //			  ,retryAnalyzer = RerunTest.class
 //				)
@@ -1056,28 +1055,28 @@ public class TestCaseEnv {
 	//////////////////////////*/ DRUZINSKO ZAVAROVANJE /*//////////////////////////
 
 	
-	//  ↓ potovanje v tujino druzinsko - prijavljen ↓ ( trajanje 8 dni, Paket B , zavarovanec se bo v tujini ukvarjal z rizičnimi športi... DA)↓
+	//  ↓ potovanje v tujino druzinsko - prijavljen ( trajanje 8 dni, Paket B , zavarovanec se bo v tujini ukvarjal z rizičnimi športi..."DA" )↓
 	
-		 @Test(groups = {"Premoz"}
-		 	//,retryAnalyzer = RerunTest.class
-				)
-		 	public void PotovanjeTujina_Druzinsko_Prijavljen() throws Exception {
-			 
-			WebDriver driver = threadLocalDriver.get();
-			long threadId = Thread.currentThread().getId();
-			String sessionId = ((ChromeDriver) driver).getSessionId().toString();
-			System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
-	
-			PotovanjeTujina_Druzinsko_Prijavljen ptDP = new PotovanjeTujina_Druzinsko_Prijavljen(driver);
-			ptDP.PotovanjeTujinaDruzinskoPrijavljenTest();
-	
-			driver.quit();
-			threadLocalDriver.remove();
-		}	  
+//		 @Test(groups = {"Premoz"}
+//		 	,retryAnalyzer = RerunTest.class
+//				)
+//		 	public void PotovanjeTujina_Druzinsko_Prijavljen() throws Exception {
+//			 
+//			WebDriver driver = threadLocalDriver.get();
+//			long threadId = Thread.currentThread().getId();
+//			String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//			System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	
+//			PotovanjeTujina_Druzinsko_Prijavljen ptDP = new PotovanjeTujina_Druzinsko_Prijavljen(driver);
+//			ptDP.PotovanjeTujinaDruzinskoPrijavljenTest();
+//	
+//			driver.quit();
+//			threadLocalDriver.remove();
+//		}	  
 
 	
 	
-	//  ↓ potovanje v tujino druzinsko - neprijavljen ( trajanje 1 leto + "Manj kot 90 dni", Paket C )↓
+	//  ↓ potovanje v tujino druzinsko - neprijavljen ( trajanje 1 leto + "Manj kot 90 dni", Paket C )↓  NEDELA
 	
 //		@Test(groups = {"Premoz"}
 //	 		,retryAnalyzer = RerunTest.class
@@ -1098,7 +1097,7 @@ public class TestCaseEnv {
 	
 
 	
-	//  ↓ potovanje v tujino druzinsko - naknadna prijava ↓ ( trajanje 1 leto + "90 ali več dni", Paket A )↓
+	//  ↓ potovanje v tujino druzinsko - naknadna prijava ( trajanje 1 leto + "90 ali več dni", Paket A )↓
 	
 //		 @Test(groups = {"Premoz"}
 //		 	 ,retryAnalyzer = RerunTest.class
@@ -1124,31 +1123,51 @@ public class TestCaseEnv {
 	//////////////////////////*/ SKUPINSKO ZAVAROVANJE /*//////////////////////////
 
 	
-	//  ↓ potovanje v tujino skupinsko - neprijavljen ↓
+	//  ↓ potovanje v tujino skupinsko - neprijavljen ( trajanje 15 dni, Paket A, "število zavarovancev = 2" )↓
 	
-//		@Test(groups = {"Premoz"}
-//	 	 ,retryAnalyzer = RerunTest.class
-//			)
-//			public void PotovanjeTujina_Skupinsko_Neprijavljen() throws Exception {
-//		
-//			WebDriver driver = threadLocalDriver.get();
-//	   		long threadId = Thread.currentThread().getId();
-//	   		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
-//	   		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
-//	    
-//	    	PotovanjeTujina_Skupinsko_Neprijavljen ptSN = new PotovanjeTujina_Skupinsko_Neprijavljen(driver);
-//	    	ptSN.PotovanjeTujinaSkupinskoTest();
-//	    
-//	   	 	driver.quit();
-//	    	threadLocalDriver.remove();
-//	}  
-//	
+		@Test(groups = {"Premoz"})
+			public void PotovanjeTujina_Skupinsko_Neprijavljen() throws Exception {
+		
+			WebDriver driver = threadLocalDriver.get();
+	   		long threadId = Thread.currentThread().getId();
+	   		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+	   		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+	    
+	    	PotovanjeTujina_Skupinsko_Neprijavljen ptSN = new PotovanjeTujina_Skupinsko_Neprijavljen(driver);
+	    	ptSN.PotovanjeTujinaSkupinskoTest();
+	    
+	   	 	driver.quit();
+	    	threadLocalDriver.remove();
+	}  
 	
 	
-	//  ↓ potovanje v tujino skupinsko - naknadna prijava ↓
+	
+	
+	//  ↓ potovanje v tujino skupinsko - prijavljen ( trajanje 21 dni, Paket B, sklenitelj je tudi zavarovanec + se bo v tujini okvarjal s športom, "število zavarovancev = 3" )↓
 	
 //		@Test(groups = {"Premoz"}
 //			,retryAnalyzer = RerunTest.class
+//			)
+//			public void PotovanjeTujina_Skupinsko_Prijavljen() throws Exception {
+//	
+//			WebDriver driver = threadLocalDriver.get();
+//			long threadId = Thread.currentThread().getId();
+//			String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//			System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	
+//			PotovanjeTujina_Skupinsko_Prijavljen ptSP = new PotovanjeTujina_Skupinsko_Prijavljen(driver);
+//			ptSP.PotovanjeTujinaSkupinskoPrijavljenTest();
+//	
+//		 	driver.quit();
+//			threadLocalDriver.remove();
+//	}    
+
+	
+	
+	//  ↓ potovanje v tujino skupinsko - naknadna prijava  ( trajanje 30 dni, Paket C, zavarovana oseba se bo ukvarjala z športi..."DA" (v modalu), "število zavarovancev = 4" )↓
+//	
+//		@Test(groups = {"Premoz"}
+//			 ,retryAnalyzer = RerunTest.class
 //			)
 //			public void PotovanjeTujina_Skupinsko_NaknadnaPrijava() throws Exception {
 //	
@@ -1164,10 +1183,74 @@ public class TestCaseEnv {
 //   		threadLocalDriver.remove();
 //	}    
 
-	
+		
+		
+		
+		
+	//////////////////////////*/ PREVERJANJE CE SO RAZLICNE KOMPONENTE FUNKCIONALNE /*//////////////////////////
 	
 		
+		//  ↓ potovanje v tujino posamicno prijavljen TESTIRANJE FUNKCIONALNOSTIH ENA ( preverim večkrat če se cena ujema z ceno na hover down prikazu premije, 
+		//	 dodam dodatno zavarovanje odpovedi turističnih potovanj - 3.010 EUR, dodam kupon avtomobilno, preverim ce se je dodal triglav komplet, plačilo na obroke + FLIK plačilo)↓
+		
+//		@Test(groups = {"Premoz"}
+//			,retryAnalyzer = RerunTest.class
+//			)
+//			public void PotovanjeTujina_Testiranje_Funkcionalnostih_ENA() throws Exception {
+//	
+//			WebDriver driver = threadLocalDriver.get();
+//  		long threadId = Thread.currentThread().getId();
+//  		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//  		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//   
+// 		PotovanjeTujina_Testiranje_Funkcionalnostih_ENA ptTF = new PotovanjeTujina_Testiranje_Funkcionalnostih_ENA(driver);
+//  		ptTF.PotovanjeTujinaTestiranjeFunkcionalnostihTestENA();
+//   
+//  	 	driver.quit();
+//   		threadLocalDriver.remove();
+//	}    
+		
+	
+		
+	//  ↓ potovanje v tujino posamicno prijavljen TESTIRANJE FUNKCIONALNOSTIH DVA ( trajanje 60 dni, obcija želim nadaljevati kasneje označena, plačilo na obroke )↓
+		
+//		@Test(groups = {"Premoz"}
+//			//,retryAnalyzer = RerunTest.class
+//			)
+//			public void PotovanjeTujina_Testiranje_Funkcionalnostih_DVA() throws Exception {
+//	
+//			WebDriver driver = threadLocalDriver.get();
+//  		long threadId = Thread.currentThread().getId();
+//  		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//  		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//   
+//  		PotovanjeTujina_Testiranje_Funkcionalnostih_DVA ptTF = new PotovanjeTujina_Testiranje_Funkcionalnostih_DVA(driver);
+//  		ptTF.PotovanjeTujinaTestiranjeFunkcionalnostihTestDVA();
+//   
+//  	 	driver.quit();
+//   		threadLocalDriver.remove();
+//	}    
+
+
+	
+	/*↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑*/
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

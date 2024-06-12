@@ -104,7 +104,7 @@ public class PotovanjeTujina_Posamicno_Prijavljen {
 
 		Thread.sleep(400);
 
-		driver.findElement(By.xpath("(//*[@class='select2-results__option'])[1]")).click();
+		driver.findElement(By.xpath("(//*[@class='select2-results__option'])[6]")).click();
 
 		f.ScrollInKlik2(By.className("submitButton"));
 
@@ -201,17 +201,6 @@ public class PotovanjeTujina_Posamicno_Prijavljen {
 		driver.findElement(By.id("policyHolderUI.addressSearch.hnr")).sendKeys(Keys.DOWN, Keys.ENTER);
 		Thread.sleep(2000);
 
-		WebElement podatkiemail = driver.findElement(By.id("unvalidatedEmail"));
-		int podatkiemail_Position = podatkiemail.getLocation().getY();
-		((JavascriptExecutor) driver)
-				.executeScript("window.scroll(0, " + (podatkiemail_Position - halfViewport) + ");");
-		Thread.sleep(1000);
-		driver.findElement(By.id("unvalidatedEmail")).sendKeys(email);
-		driver.findElement(By.id("btnPosliValidacijskoKodoNaEmail")).click();
-		Thread.sleep(3000);
-		driver.findElement(By.id("emailValidationString")).sendKeys(validacijskaKoda + Keys.ENTER);
-		Thread.sleep(1500);
-
 		WebElement podatkitelefonska = driver.findElement(By.id("policyHolderUI.phoneNumber"));
 		int podatkitelefonska_Position = podatkitelefonska.getLocation().getY();
 		((JavascriptExecutor) driver)
@@ -270,9 +259,9 @@ public class PotovanjeTujina_Posamicno_Prijavljen {
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
 
 		if (ele.isDisplayed()) {
-			System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_Posamicno_Neprijavljen");
+			System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_Posamicno_Prijavljen");
 		} else {
-			throw new RuntimeException("Sklenitev NI bila uspesna - TEST: PotovanjeTujina_Posamicno_Neprijavljen");
+			throw new RuntimeException("Sklenitev NI bila uspesna - TEST: PotovanjeTujina_Posamicno_Prijavljen");
 		}
 	}
 

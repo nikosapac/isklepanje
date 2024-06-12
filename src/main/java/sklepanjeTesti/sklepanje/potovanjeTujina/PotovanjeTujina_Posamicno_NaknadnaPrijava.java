@@ -63,8 +63,7 @@ public class PotovanjeTujina_Posamicno_NaknadnaPrijava {
 		// KORAK 2
 		// ("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_vrsta")
 
-		wait.until(ExpectedConditions
-				.urlToBe("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_vrsta"));
+		wait.until(ExpectedConditions.urlToBe("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_vrsta"));
 
 		int viewportHeight = ((Long) ((JavascriptExecutor) driver).executeScript("return window.innerHeight"))
 				.intValue();
@@ -78,7 +77,7 @@ public class PotovanjeTujina_Posamicno_NaknadnaPrijava {
 
 		driver.findElement(By.id("turisticnoPolicy.insuranceIntro.zptInsuranceType1")).click();
 
-		driver.findElement(By.className("submitButton")).click();
+		f.ScrollInKlik2(By.className("submitButton"));
 
 		// KORAK 3
 		// ("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_1")
@@ -93,22 +92,23 @@ public class PotovanjeTujina_Posamicno_NaknadnaPrijava {
 		Thread.sleep(400);
 
 		driver.findElement(By.xpath("(//*[@class='select2-results__option'])[3]")).click();
-		
-		Thread.sleep(200);	
-		
-		f.ScrollInKlik2(By.xpath("(//*[@class='radio--secondary__button'])[4]"));
-		
-		// Počaka in preveri, če se pojavi besedilo
-        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-        WebElement txt = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Ukvarjanje z rizičnimi športi ali drugimi rizičnimi aktivnostmi pomeni povečano nevarnost za morebitne škodne dogodke, zato se premija poviša za 50 %.']")));
 
-        if (txt.isDisplayed()) {
-            f.ScrollInKlik2(By.className("submitButton"));
-        } else {
-            throw new RuntimeException("Ni se izpisal text \"Ukvarjanje z rizičnimi športi ali drugimi rizičnimi aktivnostmi pomeni...\" na strani: https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_1");
-        }
-		
-		
+		Thread.sleep(200);
+
+		f.ScrollInKlik2(By.xpath("(//*[@class='radio--secondary__button'])[4]"));
+
+		// Počaka in preveri, če se pojavi besedilo
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebElement txt = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+				"//*[text()='Ukvarjanje z rizičnimi športi ali drugimi rizičnimi aktivnostmi pomeni povečano nevarnost za morebitne škodne dogodke, zato se premija poviša za 50 %.']")));
+
+		if (txt.isDisplayed()) {
+			f.ScrollInKlik2(By.className("submitButton"));
+		} else {
+			throw new RuntimeException(
+					"Ni se izpisal text \"Ukvarjanje z rizičnimi športi ali drugimi rizičnimi aktivnostmi pomeni...\" na strani: https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_1");
+		}
+
 		// KORAK 4
 		// ("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_2")
 
@@ -272,7 +272,7 @@ public class PotovanjeTujina_Posamicno_NaknadnaPrijava {
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
 
 		if (ele.isDisplayed()) {
-			System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_NaknadnaPrijava");
+			System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_Posamicno_NaknadnaPrijava");
 		} else {
 			throw new RuntimeException("Sklenitev NI bila uspesna - TEST: PotovanjeTujina_Posamicno_NaknadnaPrijavan");
 		}
