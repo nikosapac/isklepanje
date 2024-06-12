@@ -21,10 +21,10 @@ import sklepanjeTesti.Funkcije;
 import sklepanjeTesti.Funkcije2;
 import sklepanjeTesti.Prijave;
 import sklepanjeTesti.Prijave2;
-import sklepanjeTesti.TestCaseEnv;
+import sklepanjeTesti.TestRunnerLocal;
 import sklepanjeTesti.config.EnvironmentConfig;
 
-public class BancneKartice extends TestCaseEnv {
+public class BancneKartice extends TestRunnerLocal {
 	
 	private WebDriver driver;
 	EnvironmentConfig cfg = ConfigFactory.create(EnvironmentConfig.class);

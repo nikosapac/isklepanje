@@ -81,7 +81,7 @@ import sklepanjeTesti.sklepanje.validacija.*;
 import sklepanjeTesti.dbHandler.DatabaseQueryTestEnv;
 import sklepanjeTesti.sklepanje.potovanjeTujina.*;
 
-public class TestCaseEnv {
+public class TestRunnerLocal {
 	
 	public static List<Log> logi = new ArrayList<>();
 	public static String testName;
@@ -118,7 +118,7 @@ public class TestCaseEnv {
     protected static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
     protected static ThreadLocal<WebDriver> threadLocalDriver2 = new ThreadLocal<>();
     
-    private static final Logger logger2 = LoggerFactory.getLogger(TestCaseEnv.class);
+    private static final Logger logger2 = LoggerFactory.getLogger(TestRunnerLocal.class);
         
     List<Status> statusHierarchy = Arrays.asList(
   //          Status.FATAL,
@@ -1385,7 +1385,7 @@ public class TestCaseEnv {
 	}
 
 	public void setTestList(List<com.aventstack.extentreports.model.Test> testList) {
-		TestCaseEnv.testList = testList;
+		TestRunnerLocal.testList = testList;
 	}
 
 	public static int getPassedSteps() {
@@ -1399,7 +1399,7 @@ public class TestCaseEnv {
 
 
 	public void setPassedSteps(int passedSteps) {
-		TestCaseEnv.passedSteps = passedSteps;
+		TestRunnerLocal.passedSteps = passedSteps;
 	}
 
 
@@ -1409,7 +1409,7 @@ public class TestCaseEnv {
 
 
 	public void setFailedSteps(int failedSteps) {
-		TestCaseEnv.failedSteps = failedSteps;
+		TestRunnerLocal.failedSteps = failedSteps;
 	}
 
 
@@ -1419,7 +1419,7 @@ public class TestCaseEnv {
 
 
 	public void setSkippedSteps(int skippedSteps) {
-		TestCaseEnv.skippedSteps = skippedSteps;
+		TestRunnerLocal.skippedSteps = skippedSteps;
 	}
 	
 	public static String getTestName() {
@@ -1428,7 +1428,7 @@ public class TestCaseEnv {
 
 
 	public void  setTestName(String testName) {
-		TestCaseEnv.testName = testName;
+		TestRunnerLocal.testName = testName;
 	}
 
 
@@ -1438,7 +1438,7 @@ public class TestCaseEnv {
 
 
 	public void setTestStartTime(Date testStartTime) {
-		TestCaseEnv.testStartTime = testStartTime;
+		TestRunnerLocal.testStartTime = testStartTime;
 	}
 
 
@@ -1448,7 +1448,7 @@ public class TestCaseEnv {
 
 
 	public void setTestEndTime(Date testEndTime) {
-		TestCaseEnv.testEndTime = testEndTime;
+		TestRunnerLocal.testEndTime = testEndTime;
 	}
 
 
@@ -1457,7 +1457,7 @@ public class TestCaseEnv {
 	}
 
 	public void setTestStatus(Status testStatus) {
-		TestCaseEnv.testStatus = testStatus;
+		TestRunnerLocal.testStatus = testStatus;
 	}
 
 	public static int getPassedTests() {
@@ -1465,7 +1465,7 @@ public class TestCaseEnv {
 	}
 
 	public static void setPassedTests(int passedTests) {
-		TestCaseEnv.passedTests = passedTests;
+		TestRunnerLocal.passedTests = passedTests;
 	}
 
 	public static int getFailedTests() {
@@ -1473,7 +1473,7 @@ public class TestCaseEnv {
 	}
 
 	public static void setFailedTests(int failedTests) {
-		TestCaseEnv.failedTests = failedTests;
+		TestRunnerLocal.failedTests = failedTests;
 	}
 
 	public static int getSkippedTests() {
@@ -1481,7 +1481,7 @@ public class TestCaseEnv {
 	}
 
 	public static void setSkippedTests(int skippedTests) {
-		TestCaseEnv.skippedTests = skippedTests;
+		TestRunnerLocal.skippedTests = skippedTests;
 	}
 
 	public static int getAllTests() {
@@ -1489,7 +1489,7 @@ public class TestCaseEnv {
 	}
 
 	public static void setAllTests(int allTests) {
-		TestCaseEnv.allTests = allTests;
+		TestRunnerLocal.allTests = allTests;
 	}
 
 
@@ -1499,7 +1499,7 @@ public class TestCaseEnv {
 
 
 	public static void setNeuspesni(List<String> neuspesni) {
-		TestCaseEnv.neuspesni = neuspesni;
+		TestRunnerLocal.neuspesni = neuspesni;
 	}
 	
 	

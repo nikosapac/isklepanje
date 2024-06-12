@@ -16,6 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "TESTS_DATA", schema = "SELENIUM")
 public class TestsEntity implements Serializable {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TEST_ID")

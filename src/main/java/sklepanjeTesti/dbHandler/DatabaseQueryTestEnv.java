@@ -22,19 +22,19 @@ import org.hibernate.cfg.Configuration;
 
 import com.aventstack.extentreports.Status;
 
-import sklepanjeTesti.TestCaseEnv;
+import sklepanjeTesti.TestRunner;
 
 public class DatabaseQueryTestEnv {
 		
-	String testName = TestCaseEnv.getTestName();
-    Date testStartTime = TestCaseEnv.getTestStartTime();
-    String testStatus = TestCaseEnv.getTestStatus().toString();
-    int passedSteps = TestCaseEnv.getPassedSteps();
- 	int failedSteps = TestCaseEnv.getFailedSteps();
- 	List<String> opisNeuspesnih = TestCaseEnv.getNeuspesni();
+	String testName = TestRunner.getTestName();
+    Date testStartTime = TestRunner.getTestStartTime();
+    String testStatus = TestRunner.getTestStatus().toString();
+    int passedSteps = TestRunner.getPassedSteps();
+ 	int failedSteps = TestRunner.getFailedSteps();
+ 	List<String> opisNeuspesnih = TestRunner.getNeuspesni();
  	String envName = System.getProperty("env");
  	
-	public void triglavTestsData() throws SQLException {
+	public void isklepanjeTestsData() throws SQLException {
 		
 		String formattedString = opisNeuspesnih.toString()
 	 		    .replace("[", "")  
@@ -43,16 +43,16 @@ public class DatabaseQueryTestEnv {
 	 	
 		Timestamp testTimestamp = new Timestamp(testStartTime.getTime());
 	 	        
-//	    System.out.println("Ime testa: " + testName);
-//		System.out.println("Datum testa: " + testTimestamp);
-//		System.out.println("Status testa: " + testStatus);
-//		System.out.println("Uspešni testi: " + passedSteps);
-//		System.out.println("Neuspešni testi: " + failedSteps);
-//		System.out.println("Opis neuspešnih testov: " + formattedString);
-//		System.out.println("Env: " + envName);
-		
-        String SQL = "INSERT INTO SELENIUM.TESTS_DATA(APPLICATION_NAME,TEST_DATE,TEST_STATUS,PASSED_TESTS,FAILED_TESTS,FAILED_TESTS_TEXT) "
-                + "VALUES(?,?,?,?,?,?)";
+	    System.out.println("Ime testa: " + testName);
+		System.out.println("Datum testa: " + testTimestamp);
+		System.out.println("Status testa: " + testStatus);
+		System.out.println("Uspešni testi: " + passedSteps);
+		System.out.println("Neuspešni testi: " + failedSteps);
+		System.out.println("Opis neuspešnih testov: " + formattedString);
+		System.out.println("Env: " + envName);
+//		
+//        String SQL = "INSERT INTO SELENIUM.TESTS_DATA(APPLICATION_NAME,TEST_DATE,TEST_STATUS,PASSED_TESTS,FAILED_TESTS,FAILED_TESTS_TEXT) "
+//                + "VALUES(?,?,?,?,?,?)";
         
         TestsEntity testResult = new TestsEntity();
         testResult.setTestName(testName);

@@ -18,7 +18,7 @@
 					<configuration>
 						<suiteXmlFiles>
 							<suiteXmlFile>
-								src/main/resources/sklepanje.xml
+								src/main/resources/sklepanjeLocal.xml
 							</suiteXmlFile>
 						</suiteXmlFiles>
 					</configuration>
