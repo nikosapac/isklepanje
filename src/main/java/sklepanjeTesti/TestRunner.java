@@ -602,7 +602,7 @@ public class TestRunner {
 	
 	//  ↓ potovanje v tujino skupinsko - neprijavljen ( trajanje 15 dni, Paket A, "število zavarovancev = 2" )↓
 	
-	@Test(groups = { "Premoz", "Potovanje" }, retryAnalyzer = RerunTest.class)
+	@Test(groups = { "Premoz", "Potovanje" })
 	public void PotovanjeTujina_Skupinsko_Neprijavljen() throws Exception {
 
 		WebDriver driver = threadLocalDriver.get();
@@ -844,9 +844,9 @@ public class TestRunner {
 			setNeuspesni(neuspesni);
 			setTestStatus(testStatus);
 						        
-//			
-//	        DatabaseQueryTestEnv db = new DatabaseQueryTestEnv();
-//	        db.isklepanjeTestsData();
+			
+	        DatabaseQueryTestEnv db = new DatabaseQueryTestEnv();
+	        db.isklepanjeTestsData();
 			
 //			ReportBackuper bk = new ReportBackuper();
 //			bk.backUpReport();
