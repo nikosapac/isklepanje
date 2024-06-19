@@ -11,7 +11,7 @@
 		<property name="hibernate.hbm2ddl.auto">none</property>
 		
 		
-        <mapping class="sklepanjeTesti.DBHandler.TestsEntity"/>
+        <mapping class="sklepanjeTesti.dbHandler.TestsEntity"/>
 
     </session-factory>
 </hibernate-configuration>
