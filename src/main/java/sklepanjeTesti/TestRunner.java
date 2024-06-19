@@ -479,10 +479,17 @@ public class TestRunner {
 	}
 						
 	
-	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-	/*///////////////////////////////////////////// POTOVANJE V TUJINO ////////////////////////////////////////////////////*/
-	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
 	
+	
+	
+	
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ POTOVANJE V TUJINO ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
 	
 	
 	
@@ -541,7 +548,6 @@ public class TestRunner {
 	
 		
 
-	
 	//////////////////////////*/ DRUZINSKO ZAVAROVANJE /*//////////////////////////
 
 	
@@ -596,24 +602,23 @@ public class TestRunner {
 	
 	
 	
-	
 	//////////////////////////*/ SKUPINSKO ZAVAROVANJE /*//////////////////////////
 
 	
 	//  ↓ potovanje v tujino skupinsko - neprijavljen ( trajanje 15 dni, Paket A, "število zavarovancev = 2" )↓
 	
-	@Test(groups = { "Premoz", "Potovanje" }, retryAnalyzer = RerunTest.class)
-	public void PotovanjeTujina_Skupinsko_Neprijavljen() throws Exception {
-
-		WebDriver driver = threadLocalDriver.get();
-
-		PotovanjeTujina_Skupinsko_Neprijavljen ptSN = new PotovanjeTujina_Skupinsko_Neprijavljen(driver);
-		ptSN.PotovanjeTujinaSkupinskoTest();
-
-		driver.quit();
-		threadLocalDriver.remove();
-	}
-	
+//	@Test(groups = { "Premoz", "Potovanje" }, retryAnalyzer = RerunTest.class)
+//	public void PotovanjeTujina_Skupinsko_Neprijavljen() throws Exception {
+//
+//		WebDriver driver = threadLocalDriver.get();
+//
+//		PotovanjeTujina_Skupinsko_Neprijavljen ptSN = new PotovanjeTujina_Skupinsko_Neprijavljen(driver);
+//		ptSN.PotovanjeTujinaSkupinskoTest();
+//
+//		driver.quit();
+//		threadLocalDriver.remove();
+//	}
+//	
 	
 	
 	
@@ -646,10 +651,9 @@ public class TestRunner {
 //  	 	driver.quit();
 //   		threadLocalDriver.remove();
 //	}    
+		
+		
 
-		
-		
-		
 		
 	//////////////////////////*/ PREVERJANJE CE SO RAZLICNE KOMPONENTE FUNKCIONALNE /*//////////////////////////
 	
@@ -686,12 +690,50 @@ public class TestRunner {
 //	}    
 
 	
+	
+	
+		
 	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-	/*///////////////////////////////////////////// Bančne Kartice ////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ AVTOMOBILI ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
 	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
 	
-//	
-//	@Test(groups = {"Premoz", "BancneKartice"},retryAnalyzer = RerunTest.class)
+	
+	
+	//  ↓ sklenitev zavarovajna za avtomobil - brez prijave( doda kupon "BLADA DRUZINA POPUST" )↓
+
+	
+//		@Test(retryAnalyzer =
+//		RerunTest.class, groups = {"Premoz"})
+	
+//			public void AvtomobiliBrezPrijave() throws Exception {
+//			//	WebDriver driver = drivers.get("AvtomobiliTest");
+//				WebDriver driver = threadLocalDriver.get();
+	
+//			//	logger.assignCategory("Avtomobili");
+//				long threadId = Thread.currentThread().getId();
+//				String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//				System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//
+//				Avtomobili avto = new Avtomobili(driver);
+//				avto.AvtomobiliTestBrezPrijave();
+//				
+//				driver.quit();
+//				threadLocalDriver.remove();
+//				}
+	
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ BANČNE KARTICE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	
+	
+	
+//  ↓ sklenitev zavarovajna za bančno kartico ↓
+	
+//	@Test(groups = {"Premoz"},retryAnalyzer = RerunTest.class)
 //	public void BancneKartice() throws Exception {
 //		
 //		WebDriver driver = threadLocalDriver.get();
@@ -705,6 +747,275 @@ public class TestRunner {
 //	    driver.quit();
 //	    threadLocalDriver.remove();
 //	}
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DOM ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	
+	
+	
+//  ↓ sklenitev zavarovajna za dom ↓
+	
+//	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
+//	public void Dom() throws Exception {
+//		
+//		//WebDriver driver = drivers.get("DomTest");
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Dom");
+//		long threadId = Thread.currentThread().getId();
+//		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//		
+//		Dom d = new Dom(driver);
+//		d.DomQTest();
+//		
+//		driver.quit();
+//		threadLocalDriver.remove();
+//	}
+	
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ MALE ŽIVALI ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	
+	
+	
+//  ↓ sklenitev zavarovajna za psa ↓
+	
+//	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
+//	public void Mikromobilnost() throws Exception {
+//		//WebDriver driver = drivers.get("MikromobilnostTest");
+	
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Mikromobilnost");
+//		long threadId = Thread.currentThread().getId();
+//		//WebDriver driver = getDriver();
+	
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	    Mikromobilnost mikro = new Mikromobilnost(driver);
+//	    mikro.MikromobilnostTest();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	}
+	
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ MIKROMOBILNOST ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	
+	
+	
+//  ↓ sklenitev zavarovajna za kolo ↓
+	
+//	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
+//	public void Mikromobilnost() throws Exception {
+//		//WebDriver driver = drivers.get("MikromobilnostTest");
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Mikromobilnost");
+//		long threadId = Thread.currentThread().getId();
+//		//WebDriver driver = getDriver();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	    Mikromobilnost mikro = new Mikromobilnost(driver);
+//	    mikro.MikromobilnostTest();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	}
+	
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ MLADI VOZNIK ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	
+	
+//  ↓ sklenitev zavarovajna za mladega voznika ↓
+	
+//	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
+//	public void MladiVoznik() throws Exception {
+//		//WebDriver driver = drivers.get("MladiVoznikTest");
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Mladi voznik");
+//		long threadId = Thread.currentThread().getId();
+//	//	WebDriver driver = getDriver();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//
+//	    MladiVoznik mv = new MladiVoznik(driver);
+//	    mv.MladiVoznikTest();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	     
+//	}
+	
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ MOTOR ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	
+	
+//  ↓ sklenitev zavarovajna za motor ↓
+	
+//	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
+//	public void MladiVoznik() throws Exception {
+//		//WebDriver driver = drivers.get("MladiVoznikTest");
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Mladi voznik");
+//		long threadId = Thread.currentThread().getId();
+//	//	WebDriver driver = getDriver();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//
+//	    MladiVoznik mv = new MladiVoznik(driver);
+//	    mv.MladiVoznikTest();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	     
+//	}
+	
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ NEZGODA ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+
+	
+//  ↓ sklenitev zavarovanja za nezgodo otrok in mladih ↓
+
+//		@Test(groups = {"Premoz"}
+//		//,retryAnalyzer = RerunTest.class
+//				)
+//		public void NezgodaQ() throws Exception {
+//
+//		WebDriver driver = threadLocalDriver.get();
+//		//logger.assignCategory("Bančne kartice");
+//		long threadId = Thread.currentThread().getId();
+//		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//
+//		Nezgoda nez = new Nezgoda(driver);
+//		nez.NezgodaQTest();
+//
+//		driver.quit();
+//		threadLocalDriver.remove();
+//		}	
+	
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ ODPOVED POTOVANJ ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	
+	
+//  ↓ sklenitev zavarovanja za odpoved potovanj ↓
+	
+//	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
+//	public void OdpovedPotovanj() throws Exception {
+//	//	WebDriver driver = drivers.get("OdpovedPotovanjTest");
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Odpoved potovanj");
+//		long threadId = Thread.currentThread().getId();
+//		//WebDriver driver = getDriver();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//
+//	    OdpovedPotovanj op = new OdpovedPotovanj(driver);
+//	    op.OdpovedPotovanjTest();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	     
+//	}
+	
+	
+	
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ OSEBNA ZASCITA ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	
+	
+//  ↓ sklenitev zavarovanja za osebno zascito - POSAMIČNO ↓
+	
+//	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
+//	public void OsebnaZascitaPosamicno() throws Exception {
+//	//	WebDriver driver = drivers.get("OsebnaZascitaTest");
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Osebna zaščita");
+//		long threadId = Thread.currentThread().getId();
+//	//	WebDriver driver = getDriver();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	    OsebnaZascita oz = new OsebnaZascita(driver);
+//	    oz.OsebnaZascitaPosamicno();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	    
+//	}
+	
+	
+//  ↓ sklenitev zavarovanja za osebno zascito - DRUŽINSKO ↓
+	
+	
+//	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
+//	public void OsebnaZascitaDruzinsko() throws Exception {
+//	//	WebDriver driver = drivers.get("OsebnaZascitaTest");
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Osebna zaščita");
+//		long threadId = Thread.currentThread().getId();
+//	//	WebDriver driver = getDriver();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//
+//	    OsebnaZascita oz = new OsebnaZascita(driver);
+//	    oz.OsebnaZascitaDruzinsko();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	    
+//	}
+	
+	
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ MALE ZIVALI ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
+	
+	
+	
+	
+	
+
+	
+	
+	
 	
 	
 	public static String getScreenshot(WebDriver driver, String screenshotName) throws Exception {

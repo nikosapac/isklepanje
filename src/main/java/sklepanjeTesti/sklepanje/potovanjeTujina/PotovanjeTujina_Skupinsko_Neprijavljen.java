@@ -91,11 +91,11 @@ public class PotovanjeTujina_Skupinsko_Neprijavljen {
 		wait.until(
 				ExpectedConditions.urlToBe("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_1"));
 
-		Thread.sleep(200);
-
-		driver.findElement(By.className("select2-selection__arrow")).click();
-
 		Thread.sleep(400);
+		
+		f.ScrollToElement(By.className("select2-selection__arrow"));
+		
+		driver.findElement(By.className("select2-selection__arrow")).click();
 
 		driver.findElement(By.xpath("(//*[@class='select2-results__option'])[5]")).click();
 

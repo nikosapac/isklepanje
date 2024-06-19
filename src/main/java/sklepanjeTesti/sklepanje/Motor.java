@@ -135,8 +135,8 @@ public class Motor {
 		f.ScrollInKlik2(By.id("vehiclePolicy.vehicle.vehicleRegistrationNumber"));
 		driver.findElement(By.id("vehiclePolicy.vehicle.vehicleRegistrationNumber")).sendKeys(registerska);
 		
-		f.ScrollInKlik2(By.id("vehiclePolicy.vehicle.milageKm"));
-		driver.findElement(By.id("vehiclePolicy.vehicle.milageKm")).sendKeys(km);
+//		f.ScrollInKlik2(By.id("vehiclePolicy.vehicle.milageKm"));
+//		driver.findElement(By.id("vehiclePolicy.vehicle.milageKm")).sendKeys(km);
 		
 		f.ScrollInKlik2(By.id("vehiclePolicy.insuranceConclusion.policyStartDate"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

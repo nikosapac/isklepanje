@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -260,11 +262,11 @@ public class PotovanjeTujina_Druzinsko_Neprijavljen {
 		driver.findElement(By.className("btn-next")).click();
 		Thread.sleep(1000);
 		
-		f.ScrollToElement(By.id("addInsurerForm"));
+		f.ScrollToElement(By.className("cs-slider"));
 		
-		f.ScrollInKlik2(By.className("cs-slidert"));
+        f.ScrollInKlik2(By.className("cs-slider"));
 		
-		driver.findElement(By.className("btn-next")).click();
+		f.ScrollInKlik2(By.className("btn-next"));
 
 		// KORAK 6
 		// ("https://skleni-qa.triglav.si/isklepanje/tujina/potovanje_zavarovanje_4")

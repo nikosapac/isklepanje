@@ -416,8 +416,8 @@ public class PotovanjeTujina_Testiranje_Funkcionalnostih_ENA {
 		
 		driver.findElement(By.xpath("//*[text()='Soglašam s pogoji plačila s trajnikom']")).click();	
 		
-		// Spletno plačilo s Flik
-		f.ScrollInKlik2(By.xpath("(//*[@class='radio-quaternary__button'])[4]"));
+		// Spletno plačilo Kreditno kartico
+		//f.ScrollInKlik2(By.xpath("(//*[@class='radio-quaternary__button'])[3]"));
 		
 		Thread.sleep(200);
 		

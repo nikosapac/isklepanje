@@ -148,43 +148,27 @@ public class Nezgoda {
 		
 		f.ScrollInKlik2(By.className("submitButton"));
 	
-		// KORAK 5 - Plačilo
+		// PLAČILO -
+				// https://skleni-qa.triglav.si/isklepanje/avtomobilno/nezgoda/nezgodno_zavarovanje_otrok_in_mladih_5
 		
 		new WebDriverWait(driver,Duration.ofSeconds(30)).until(ExpectedConditions.urlToBe(baseURL + "/isklepanje/nezgoda/nezgodno_zavarovanje_otrok_in_mladih_5"));
+		
+				driver.findElement(By.className("agreement-checkbox-label")).click();
+				Thread.sleep(1000);
+				
+				f.ScrollInKlik("//button[@name='simulatePayment']");
 
-		f.implicitWait(10);
-		
-		f.ScrollInKlik2(By.xpath("//*[@class='checkbox--primary__icon']"));
-		
-		Thread.sleep(4000);
-		
-		f.implicitWait(10);
-		
-		driver.findElement(By.className("monthlyInstallment")).sendKeys("SI56 0234 0176 4167 804");
-		
-		f.implicitWait(10);
-		
-		f.ScrollInKlik2(By.xpath("//*[@for='soglasam-s-pogoji-obroki']"));
-		
-		f.implicitWait(10);
-		
-		f.ScrollInKlik2(By.xpath("(//*[@class='radio-quaternary__button'])[3]"));
-		
-		f.implicitWait(10);
-		
-	//	f.ScrollInKlik2(By.xpath("(//*[@class='submitButton'])[1]"));
-		
-		f.ScrollInKlik("//button[@name='simulatePayment']");
-		
-		WebElement ele = driver.findElement(By.xpath("//*[text()='Hvala!']"));
-		
-		new WebDriverWait(driver,Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(ele));
-		
-		if(ele.isDisplayed() == true) {
-			System.out.println("Sklenitev NezgodaQTest je bilo uspešno");
-		} else {
-			throw new Exception("Sklenitev NezgodaQTest ni bilo uspešno");
-		}  
+				Thread.sleep(3000);
+
+				WebElement ele = driver.findElement(By.xpath("//*[text()='Hvala!']"));
+
+				new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
+
+				if (ele.isDisplayed()) {
+					System.out.println("Sklenitev je bila uspesna - TEST: PotovanjeTujina_Skupinsko_NaknadnaPrijava");
+				} else {
+					throw new RuntimeException("Sklenitev NI bila uspesna - TEST: PotovanjeTujina_Skupinsko_NaknadnaPrijava");
+				}
 		
 	}
 	
@@ -305,11 +289,14 @@ public class Nezgoda {
 
 		f.implicitWait(10);
 		
-		f.ScrollInKlik2(By.xpath("//*[@class='checkbox--primary__icon']"));
+		f.ScrollInKlik2(By.xpath("//*[@class='agreement-checkbox-label']"));
 		
 		Thread.sleep(4000);
 		
 		f.implicitWait(10);
+	
+		
+		driver.findElements(By.className("radio--secondary__button"));
 		
 		driver.findElement(By.className("monthlyInstallment")).sendKeys("SI56 0234 0176 4167 804");
 		

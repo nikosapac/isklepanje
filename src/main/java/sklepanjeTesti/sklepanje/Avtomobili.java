@@ -441,6 +441,9 @@ public class Avtomobili {
 		    
 		    funk.ScrollInKlik("//*[@id=\"informativeCalculation\"]/div[2]/div[2]/div[2]/div[2]/a");
 		    
+	
+
+		    
 		    Thread.sleep(1000);
 		    funk.implicitWait(10);
 		    
@@ -695,12 +698,12 @@ public class Avtomobili {
 		Thread.sleep(1000);
 		
 		// Število prevoženih km
-		WebElement prevozeniKm = driver.findElement(By.id("vehiclePolicy.vehicle.milageKm"));
-		int prevozeniKm_Position = prevozeniKm.getLocation().getY();
-		((JavascriptExecutor) driver).executeScript("window.scroll(0, " + (prevozeniKm_Position - halfViewport) + ");");
-		Thread.sleep(1000);
-		driver.findElement(By.id("vehiclePolicy.vehicle.milageKm")).sendKeys(kilometri);
-		Thread.sleep(1000);
+//		WebElement prevozeniKm = driver.findElement(By.id("vehiclePolicy.vehicle.milageKm"));
+//		int prevozeniKm_Position = prevozeniKm.getLocation().getY();
+//		((JavascriptExecutor) driver).executeScript("window.scroll(0, " + (prevozeniKm_Position - halfViewport) + ");");
+//		Thread.sleep(1000);
+//		driver.findElement(By.id("vehiclePolicy.vehicle.milageKm")).sendKeys(kilometri);
+//		Thread.sleep(1000);
 
 		// Datum zacetka zavarovanja
 		
@@ -879,13 +882,20 @@ public class Avtomobili {
 		
 		funk.implicitWait(10);
 		
-		driver.findElement(By.xpath("(//*[@class='checkbox--primary__icon'])[1]")).click();
-		driver.findElement(By.id("btnTkConsentAccepted")).click();
-		funk.implicitWait(10);
-		funk.waitForLoaderToFinish(driver, By.className("loader"));
-		funk.implicitWait(10);
-		driver.findElement(By.xpath("//*[@id=\"tkConsentSuccess\"]/div/div/div[1]/a")).click();
-		funk.implicitWait(10);
+//		driver.findElement(By.xpath("(//*[@class='checkbox--primary__icon'])[1]")).click();
+//		driver.findElement(By.id("btnTkConsentAccepted")).click();
+//		funk.implicitWait(10);
+//		funk.waitForLoaderToFinish(driver, By.className("loader"));
+//		funk.implicitWait(10);
+//		driver.findElement(By.xpath("//*[@id=\"tkConsentSuccess\"]/div/div/div[1]/a")).click();
+//		funk.implicitWait(10);
+		
+		
+//		funk.ScrollToElement(By.id("btnCarVnosOtroka"));
+//		
+//		Thread.sleep(300);
+//		
+//		driver.findElement(By.id("btnCarVnosOtroka")).click();
 		
 		WebElement mladaDruzinaPopust = driver
 				.findElement(By.id("btnCarVnosOtroka"));

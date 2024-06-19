@@ -24,7 +24,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.reflect.Method;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,6 +76,7 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 import sklepanjeTesti.config.EnvironmentConfig;
 import sklepanjeTesti.informativniIzracun.*;
 import sklepanjeTesti.sklepanje.*;
+import sklepanjeTesti.sklepanje.maleZivali.MaleZivali0KlikanjeNaprej0Neizpolnjenih;
 import sklepanjeTesti.sklepanje.naprave.*;
 import sklepanjeTesti.sklepanje.naprave.belaTehnika.*;
 import sklepanjeTesti.sklepanje.naprave.ostaleNaprave.*;
@@ -147,6 +151,8 @@ public class TestRunnerLocal {
     	extent.attachReporter(spark);
 		
 		logger = extent.createTest("isklepanje");
+		
+		deleteAllImagesFromSlike();
 //		
 				
     }
@@ -676,6 +682,19 @@ public class TestRunnerLocal {
 	// Testi za premoženje:
 		
 	
+	@Test(groups = {"Premoz","MaleZivali"})
+	public void maleZivaliPrviTest() throws InterruptedException {
+		
+		WebDriver driver = threadLocalDriver.get();
+		
+		MaleZivali0KlikanjeNaprej0Neizpolnjenih mz = new MaleZivali0KlikanjeNaprej0Neizpolnjenih(driver);
+		mz.MaleZivaliDrugiTest();
+		
+		driver.quit();
+		threadLocalDriver.remove();
+		
+	}	
+	
 //	@Test(groups = {"Premoz"},retryAnalyzer = RerunTest.class)
 //	public void BancneKartice() throws Exception {
 //		
@@ -693,24 +712,27 @@ public class TestRunnerLocal {
 	
 	
 	
-	/*
-	@Test(groups = {"Premoz"},retryAnalyzer = RerunTest.class)
-	public void NezgodaQ() throws Exception {
-
-		WebDriver driver = threadLocalDriver.get();
-	//	logger.assignCategory("Bančne kartice");
-	    long threadId = Thread.currentThread().getId();
-	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
-	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
-	    
-	    
-	    Nezgoda nez = new Nezgoda(driver);
-	    nez.NezgodaQTest();
-	    
-	    driver.quit();
-	    threadLocalDriver.remove();
-	}	
 	
+//	@Test(groups = {"Premoz"}
+//			//,retryAnalyzer = RerunTest.class
+//			)
+//	public void NezgodaQ() throws Exception {
+//
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Bančne kartice");
+//	    long threadId = Thread.currentThread().getId();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	    
+//	    Nezgoda nez = new Nezgoda(driver);
+//	    nez.NezgodaQTest();
+//	    
+//	    driver.quit();
+//	    threadLocalDriver.remove();
+//	}	
+	
+	/*
 	@Test(groups = {"Premoz"},retryAnalyzer = RerunTest.class)
 	public void BancneKartice() throws Exception {
 		
@@ -726,23 +748,26 @@ public class TestRunnerLocal {
 	    threadLocalDriver.remove();
 	}
 	
-	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
-	public void Dom() throws Exception {
-		
-		//WebDriver driver = drivers.get("DomTest");
-		WebDriver driver = threadLocalDriver.get();
-	//	logger.assignCategory("Dom");
-		long threadId = Thread.currentThread().getId();
-		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
-		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
-		
-		Dom d = new Dom(driver);
-		d.DomQTest();
-		
-		driver.quit();
-		threadLocalDriver.remove();
-	}
 	
+	
+//	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
+//	public void Dom() throws Exception {
+//		
+//		//WebDriver driver = drivers.get("DomTest");
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Dom");
+//		long threadId = Thread.currentThread().getId();
+//		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//		
+//		Dom d = new Dom(driver);
+//		d.DomQTest();
+//		
+//		driver.quit();
+//		threadLocalDriver.remove();
+//	}
+	
+	 /*
 	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
 	public void Mikromobilnost() throws Exception {
 		//WebDriver driver = drivers.get("MikromobilnostTest");
@@ -759,6 +784,8 @@ public class TestRunnerLocal {
 	    driver.quit();
 	    threadLocalDriver.remove();
 	}
+	
+
 	
 	// ne zaganja
 	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz","Other"})
@@ -779,22 +806,26 @@ public class TestRunnerLocal {
 	    threadLocalDriver.remove();
 	}
 	
-	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
-	public void AvtomobiliBrezPrijave() throws Exception {
-		//WebDriver driver = drivers.get("AvtomobiliTest");
-		WebDriver driver = threadLocalDriver.get();
-	//	logger.assignCategory("Avtomobili");
-		long threadId = Thread.currentThread().getId();
-	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
-	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
-
-	    Avtomobili avto = new Avtomobili(driver);
-	    avto.AvtomobiliTestBrezPrijave();
-	    				
-		driver.quit();
-		threadLocalDriver.remove();
-	}
+		*/
 	
+//	@Test(retryAnalyzer =
+//			RerunTest.class, groups = {"Premoz"})
+//	public void AvtomobiliBrezPrijave() throws Exception {
+//		//WebDriver driver = drivers.get("AvtomobiliTest");
+//		WebDriver driver = threadLocalDriver.get();
+//	//	logger.assignCategory("Avtomobili");
+//		long threadId = Thread.currentThread().getId();
+//	    String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	    System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//
+//	    Avtomobili avto = new Avtomobili(driver);
+//	    avto.AvtomobiliTestBrezPrijave();
+//	    				
+//		driver.quit();
+//		threadLocalDriver.remove();
+//	}
+	
+	/*
 	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
 	public void MaleZivali() throws Exception {
 	//	WebDriver driver = drivers.get("MaleZivaliTest");
@@ -811,6 +842,7 @@ public class TestRunnerLocal {
 	 	driver.quit();
 	 	threadLocalDriver.remove();
 	}
+	
 	
 	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
 	public void MladiVoznik() throws Exception {
@@ -865,7 +897,7 @@ public class TestRunnerLocal {
 	    threadLocalDriver.remove();
 	     
 	}
-	
+
 	@Test(retryAnalyzer = RerunTest.class, groups = {"Premoz"})
 	public void OsebnaZascitaPosamicno() throws Exception {
 	//	WebDriver driver = drivers.get("OsebnaZascitaTest");
@@ -978,7 +1010,7 @@ public class TestRunnerLocal {
 	
 	
 	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-	/*///////////////////////////////////////////// POTOVANJE V TUJINO ////////////////////////////////////////////////////*/
+	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ POTOVANJE V TUJINO ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
 	/*↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓*/
 	
 	
@@ -990,7 +1022,7 @@ public class TestRunnerLocal {
 	//  ↓ potovanje v tujino posamicno - prijavljen ( trajanje 2 dni, Paket B )↓ 
 	
 //		@Test(groups = {"Premoz"}
-//		  ,retryAnalyzer = RerunTest.class
+//		 // ,retryAnalyzer = RerunTest.class
 //			)
 //		public void PotovanjeTujina_Posamicno_Prijavljen() throws Exception {
 //		
@@ -1011,7 +1043,7 @@ public class TestRunnerLocal {
 	//  ↓ potovanje v tujino posamicno - neprijavljen ( trajanje 3 dni, Paket A )↓ 
 	
 //		@Test(groups = {"Premoz"}
-//			,retryAnalyzer = RerunTest.class
+//			//,retryAnalyzer = RerunTest.class
 //				)
 //			public void PotovanjeTujina_Posamicno_Neprijavljen() throws Exception {
 //			
@@ -1032,7 +1064,7 @@ public class TestRunnerLocal {
 	//  ↓ potovanje v tujino posamicno - naknadna prijava ( trajanje 5 dni + se boste v tujini ukvarjali z različnimi športi..."DA", Paket C )↓
 	
 //		@Test(groups = {"Premoz"}
-//			  ,retryAnalyzer = RerunTest.class
+//			//  ,retryAnalyzer = RerunTest.class
 //				)
 //			public void PotovanjeTujina_Posamicno_NaknadnaPrijava() throws Exception {
 //		
@@ -1047,7 +1079,7 @@ public class TestRunnerLocal {
 //	    	driver.quit();
 //	    	threadLocalDriver.remove();
 //		}  
-	
+//	
 	
 		
 
@@ -1055,10 +1087,10 @@ public class TestRunnerLocal {
 	//////////////////////////*/ DRUZINSKO ZAVAROVANJE /*//////////////////////////
 
 	
-	//  ↓ potovanje v tujino druzinsko - prijavljen ( trajanje 8 dni, Paket B , zavarovanec se bo v tujini ukvarjal z rizičnimi športi..."DA" )↓
+	//  ↓ potovanje v tujino druzinsko - prijavljen ( trajanje 8 dni, Paket B , zavarovanec se bo v tujini ukvarjal z rizičnimi športi..."DA", en dodan družinski član )↓
 	
 //		 @Test(groups = {"Premoz"}
-//		 	,retryAnalyzer = RerunTest.class
+//		 	//,retryAnalyzer = RerunTest.class
 //				)
 //		 	public void PotovanjeTujina_Druzinsko_Prijavljen() throws Exception {
 //			 
@@ -1079,7 +1111,7 @@ public class TestRunnerLocal {
 	//  ↓ potovanje v tujino druzinsko - neprijavljen ( trajanje 1 leto + "Manj kot 90 dni", Paket C )↓  NEDELA
 	
 //		@Test(groups = {"Premoz"}
-//	 		,retryAnalyzer = RerunTest.class
+//	 		//,retryAnalyzer = RerunTest.class
 //  		     )
 //		public void PotovanjeTujina_Druzisnko_Neprijavljen() throws Exception {
 //		
@@ -1100,7 +1132,7 @@ public class TestRunnerLocal {
 	//  ↓ potovanje v tujino druzinsko - naknadna prijava ( trajanje 1 leto + "90 ali več dni", Paket A )↓
 	
 //		 @Test(groups = {"Premoz"}
-//		 	 ,retryAnalyzer = RerunTest.class
+//		 	// ,retryAnalyzer = RerunTest.class
 //				)
 //		 	public void PotovanjeTujina_Druzinsko_NaknadnaPrijava() throws Exception {
 //			 
@@ -1119,26 +1151,27 @@ public class TestRunnerLocal {
 	
 	
 	
-	
 	//////////////////////////*/ SKUPINSKO ZAVAROVANJE /*//////////////////////////
 
 	
 	//  ↓ potovanje v tujino skupinsko - neprijavljen ( trajanje 15 dni, Paket A, "število zavarovancev = 2" )↓
 	
-		@Test(groups = {"Premoz"})
-			public void PotovanjeTujina_Skupinsko_Neprijavljen() throws Exception {
-		
-			WebDriver driver = threadLocalDriver.get();
-	   		long threadId = Thread.currentThread().getId();
-	   		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
-	   		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
-	    
-	    	PotovanjeTujina_Skupinsko_Neprijavljen ptSN = new PotovanjeTujina_Skupinsko_Neprijavljen(driver);
-	    	ptSN.PotovanjeTujinaSkupinskoTest();
-	    
-	   	 	driver.quit();
-	    	threadLocalDriver.remove();
-	}  
+//	     @Test(groups = {"Premoz"}
+//	        //,retryAnalyzer = RerunTest.class
+//	        )
+//			public void PotovanjeTujina_Skupinsko_Neprijavljen() throws Exception {
+//		
+//			WebDriver driver = threadLocalDriver.get();
+//	   		long threadId = Thread.currentThread().getId();
+//	   		String sessionId = ((ChromeDriver) driver).getSessionId().toString();
+//	   		System.out.println("Thread ID: " + threadId + ", Session ID: " + sessionId);
+//	    
+//	    	PotovanjeTujina_Skupinsko_Neprijavljen ptSN = new PotovanjeTujina_Skupinsko_Neprijavljen(driver);
+//	    	ptSN.PotovanjeTujinaSkupinskoTest();
+//	    
+//	   	 	driver.quit();
+//	    	threadLocalDriver.remove();
+//	}  
 	
 	
 	
@@ -1146,7 +1179,7 @@ public class TestRunnerLocal {
 	//  ↓ potovanje v tujino skupinsko - prijavljen ( trajanje 21 dni, Paket B, sklenitelj je tudi zavarovanec + se bo v tujini okvarjal s športom, "število zavarovancev = 3" )↓
 	
 //		@Test(groups = {"Premoz"}
-//			,retryAnalyzer = RerunTest.class
+//			//,retryAnalyzer = RerunTest.class
 //			)
 //			public void PotovanjeTujina_Skupinsko_Prijavljen() throws Exception {
 //	
@@ -1165,9 +1198,9 @@ public class TestRunnerLocal {
 	
 	
 	//  ↓ potovanje v tujino skupinsko - naknadna prijava  ( trajanje 30 dni, Paket C, zavarovana oseba se bo ukvarjala z športi..."DA" (v modalu), "število zavarovancev = 4" )↓
-//	
+	
 //		@Test(groups = {"Premoz"}
-//			 ,retryAnalyzer = RerunTest.class
+//			// ,retryAnalyzer = RerunTest.class
 //			)
 //			public void PotovanjeTujina_Skupinsko_NaknadnaPrijava() throws Exception {
 //	
@@ -1191,10 +1224,10 @@ public class TestRunnerLocal {
 	
 		
 		//  ↓ potovanje v tujino posamicno prijavljen TESTIRANJE FUNKCIONALNOSTIH ENA ( preverim večkrat če se cena ujema z ceno na hover down prikazu premije, 
-		//	 dodam dodatno zavarovanje odpovedi turističnih potovanj - 3.010 EUR, dodam kupon avtomobilno, preverim ce se je dodal triglav komplet, plačilo na obroke + FLIK plačilo)↓
+		//	 dodam dodatno zavarovanje odpovedi turističnih potovanj - 3.010 EUR, dodam kupon avtomobilno, preverim ce se je dodal triglav komplet, plačilo na obroke)↓
 		
 //		@Test(groups = {"Premoz"}
-//			,retryAnalyzer = RerunTest.class
+//			//,retryAnalyzer = RerunTest.class
 //			)
 //			public void PotovanjeTujina_Testiranje_Funkcionalnostih_ENA() throws Exception {
 //	
@@ -1209,7 +1242,7 @@ public class TestRunnerLocal {
 //  	 	driver.quit();
 //   		threadLocalDriver.remove();
 //	}    
-		
+	
 	
 		
 	//  ↓ potovanje v tujino posamicno prijavljen TESTIRANJE FUNKCIONALNOSTIH DVA ( trajanje 60 dni, obcija želim nadaljevati kasneje označena, plačilo na obroke )↓
@@ -1251,7 +1284,31 @@ public class TestRunnerLocal {
 	
 	
 	
-	
+	public void deleteAllImagesFromSlike() {
+		
+		// delete all images except for slikaUpload.png (used in test)
+		
+		String packagePath = System.getProperty("user.dir") + "/slike";
+		String keepFile = "slikaUpload.png";
+		
+		Path directory = Paths.get(packagePath.replace("/", File.separator));
+		
+		
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(directory, "*.{png}")){
+			
+			for (Path file : stream) {
+				if(!file.getFileName().toString().equals(keepFile)) {
+					Files.delete(file);
+					System.out.println("Deleted: " + file);
+				}
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	
 	public static String getScreenshot(WebDriver driver, String screenshotName) throws Exception {

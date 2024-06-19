@@ -91,9 +91,11 @@ public class PotovanjeTujina_Skupinsko_Prijavljen {
 		int posamicno_Position = posamicno.getLocation().getY();
 		((JavascriptExecutor) driver).executeScript("window.scroll(0, " + (posamicno_Position - halfViewport) + ");");
 		Thread.sleep(1000);
-		((JavascriptExecutor) driver).executeScript("window.scroll(0,400)");
+		((JavascriptExecutor) driver).executeScript("window.scroll(0,800)");
 
 		driver.findElement(By.id("turisticnoPolicy.insuranceIntro.zptInsuranceType3")).click();
+		
+		f.ScrollToElement(By.className("submitButton"));
 
 		f.ScrollInKlik2(By.className("submitButton"));
 
@@ -108,6 +110,8 @@ public class PotovanjeTujina_Skupinsko_Prijavljen {
 		driver.findElement(By.className("inputNumber-plus")).click();
 
 		Thread.sleep(200);
+		
+		f.ScrollToElement(By.className("select2-selection__arrow"));
 
 		driver.findElement(By.className("select2-selection__arrow")).click();
 
